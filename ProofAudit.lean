@@ -35,7 +35,8 @@ private def readRows (path : System.FilePath) (header : List String) : IO (List 
 private def forbidden (n : Name) : Bool :=
   [`ITree.ITree, `ITree.ITreeF, `CTree.embed, `CTree.embed', `Paco].any (·.isPrefixOf n)
 
-private def checkAxioms (env : Environment) (n : Name) : IO Unit := do
+def checkAxioms (env : Environment) (n : Name) : IO Unit := do
+  let _ ← requireInfo env n
   let axs ← (collectAxioms (m := CoreM) n).toIO' { fileName := "proof-audit", fileMap := default }
     { env }
   let bad := axs.filter fun ax => ![``propext, ``Classical.choice, ``Quot.sound].contains ax
@@ -86,7 +87,12 @@ def audit (env : Environment) (port : System.FilePath) : IO Unit := do
         fail s!"{key}: expected a proved result or concrete instance, not {n}"
       proofs := proofs + 1
     if required || env.contains (.str `PortChecks.Expected key) then checkType env key info
-  if proofs == 0 then fail "no source proofs in inventory"
+  unless keys.size == 5195 && proofs == 2322 do
+    fail s!"incomplete frozen inventory: {keys.size}/5195 globals, {proofs}/2322 proof and instance keys"
+  for n in [`Vellvm.Semantics.interp_mcfg_is_resolution, `Vellvm.Semantics.interpreter_param_is_resolution,
+      `Vellvm.Semantics.TopLevel.interpreter_cursor_adequate, `Vellvm.Semantics.TopLevel.instrumentation_erasure] do
+    let info ← requireInfo env n
+    unless info.isTheorem do fail s!"{n}: expected a proved semantic result"
   let mut audited := 0
   for (mod, data) in env.header.moduleNames.zip env.header.moduleData do
     unless Name.isPrefixOf `Vellvm mod || Name.isPrefixOf `PortChecks mod do continue
@@ -102,7 +108,14 @@ def audit (env : Environment) (port : System.FilePath) : IO Unit := do
       if Name.isPrefixOf `Vellvm mod then
         for dep in info.getUsedConstantsAsSet do
           if forbidden dep then fail s!"{n}: forbidden dependency {dep}"
-        if info.isUnsafe then fail s!"{n}: unsafe declaration in the formal library"
+        -- Lean implements each inductive's ctorIdx via getObjTagNat; it is not a source override.
+        let generatedTag := fun (base impl : Name) ↦
+          (isCtorIdxCore? env base).isSome && impl == .str base "_impl" &&
+          Compiler.getImplementedBy? env base == some impl
+        if let some impl := Compiler.getImplementedBy? env n then
+          unless generatedTag n impl do fail s!"{n}: unverified implementation override {impl}"
+        if info.isUnsafe && !generatedTag n.getPrefix n then
+          fail s!"{n}: unsafe declaration in the formal library"
       -- Includes helper lemmas, opaque proofs, generated declarations and instances.
       checkAxioms env n
       audited := audited + 1

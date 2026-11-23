@@ -1,0 +1,48 @@
+name: Check Vellvm
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+env:
+  LC_ALL: C
+  TZ: UTC
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the pinned Lean and LLVM toolchains
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y elan clang-20=1:20.1.2-0ubuntu1~24.04.3
+          echo /usr/lib/llvm-20/bin >> "$GITHUB_PATH"
+          elan toolchain install "$(cat lean-toolchain)"
+      - name: Build and check all proof roots
+        run: |
+          lake exe cache get Mathlib.Tactic Mathlib.Data.Int.Log Mathlib.Order.Std
+          lake build Vellvm PortChecks vellvm frontend proof-audit
+          lake env leanchecker --fresh PortChecks
+          lake exe proof-audit
+          python3 scripts/check-proof-audit.py
+      - name: Execute the semantic probes and real programs
+        run: |
+          lake env lean Examples/TreeRelations.lean
+          lake env lean --run Examples/GuardPrefix.lean
+          lake env lean --run Examples/Choices.lean
+          python3 scripts/check-examples.py
+  source-evidence:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install reference build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y opam make perl m4 pkg-config libgmp-dev clang-20=1:20.1.2-0ubuntu1~24.04.3
+          echo /usr/lib/llvm-20/bin >> "$GITHUB_PATH"
+          opam init --bare --disable-sandboxing -y
+      - name: Regenerate the formal and executable evidence separately
+        run: |
+          export VELLVM_SRC="$RUNNER_TEMP/vellvm-source"
+          git init "$VELLVM_SRC"
+          git -C "$VELLVM_SRC" fetch --depth=1 https://github.com/vellvm/vellvm.git 3a6f23d33602b3d677b5b5f9088b9a32adf7dc7d 7f0610c38d829b79bf6e867edf410c9e6f928f98
+          python3 scripts/reference.py --check
+          python3 scripts/lexer_tables.py
