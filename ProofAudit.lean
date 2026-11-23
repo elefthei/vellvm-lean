@@ -71,12 +71,12 @@ def audit (env : Environment) (port : System.FilePath) : IO Unit := do
       unless env.contains n || env.isNamespace n do
         fail s!"{key}: missing target namespace {n}"
       continue
-    -- Rocq constructors and projections are module-level; Lean's `export` exposes that spelling
-    -- without duplicating their declarations outside the enclosing inductive/structure namespace.
-    let n ← if env.contains n || !["constructor", "field"].contains role then pure n
+    -- Rocq may also give a constructor a module-level Definition name (e.g. ParserHelper.BFloat).
+    -- Resolve exports exactly as Lean does, then check the canonical declaration's origin and type.
+    let n ← if env.contains n then pure n
       else match getAliases env n false with
         | [canonical] => pure canonical
-        | _ => fail s!"{key}: missing or ambiguous constructor/field {n}"
+        | _ => fail s!"{key}: missing or ambiguous target {n}"
     let info ← requireInfo env n
     let some idx := env.getModuleIdxFor? n | fail s!"{n}: unknown provenance"
     unless mod.isPrefixOf env.header.moduleNames[idx.toNat]! do
