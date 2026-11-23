@@ -1,0 +1,30 @@
+name = "vellvm"
+defaultTargets = ["Vellvm", "PortChecks", "vellvm", "frontend", "proof-audit"]
+
+[[require]]
+name = "ctrees"
+git = "https://github.com/elefthei/ctrees-lean"
+rev = "9df35772cf46620e0647b615c4b29ae067c10ffa"
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "fc4f59e577feb1a4956671bc04ac18aaaf8cd842"
+
+[[lean_lib]]
+name = "Vellvm"
+
+[[lean_lib]]
+name = "PortChecks"
+
+[[lean_exe]]
+name = "vellvm"
+root = "Main"
+
+[[lean_exe]]
+name = "frontend"
+root = "FrontendMain"
+
+[[lean_exe]]
+name = "proof-audit"
+root = "ProofAudit"
