@@ -1,38 +1,40 @@
-import Vellvm.Theory.I2F.I2F_memory.Derived
+import Vellvm.Theory.I2F.I2F_memory.Transfers
+import Vellvm.Theory.I2F.I2F_exp.Values
 import Vellvm.Semantics.Handlers.Memory
 import Vellvm.Theory.I2F.Refinement.Events
 
 namespace Vellvm.Theory.I2F.I2F_memory
 open Vellvm.Semantics.DynamicValues Vellvm.Semantics.Implementations.Memory
+open Vellvm.Semantics.MemoryBytes
 open Vellvm.Semantics.LLVMEvents Vellvm.Theory.I2F.Refinement
 open Vellvm.Theory.I2F.I2F_memS
 open Vellvm.Theory.I2F.I2F_exp
 
-theorem I2F_memcpy (s d : PInf.PTR.ptr) (s′ d′ : PFin.PTR.ptr)
-    (hs : I2F_Addr s s′) (hd : I2F_Addr d d′) (size : Nat) (vol : Bool) :
+theorem I2F_memcpy (s d : PInf.PTR.ptr) (s' d' : PFin.PTR.ptr)
+    (hs : I2F_Addr s s') (hd : I2F_Addr d d') (size : Nat) (vol : Bool) :
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memcpy PInf (@MemoryModelPrimitivesV PInf) s d size vol)
-      (@memcpy PFin (@MemoryModelPrimitivesV PFin) s′ d′ size vol) := by
+      (@memcpy PFin (@MemoryModelPrimitivesV PFin) s' d' size vol) := by
   unfold memcpy
-  rw [I2F_no_overlap d s size d′ s′ size hd hs, I2F_Addr_ptr_to_int _ _ hs,
+  rw [I2F_no_overlap d s size d' s' size hd hs, I2F_Addr_ptr_to_int _ _ hs,
     I2F_Addr_ptr_to_int _ _ hd]
   split <;> rename_i hc <;> try simp only [hc, if_true, if_false]
   · exact I2F_memS_bind _ _ _ _ _ _ _ (I2F_read_bytes _ _ hs size) (I2F_write_bytes _ _ hd)
   · apply I2F_Mub_l
 
-theorem I2F_memmove (s d : PInf.PTR.ptr) (s′ d′ : PFin.PTR.ptr)
-    (hs : I2F_Addr s s′) (hd : I2F_Addr d d′) (size : Nat) (vol : Bool) :
+theorem I2F_memmove (s d : PInf.PTR.ptr) (s' d' : PFin.PTR.ptr)
+    (hs : I2F_Addr s s') (hd : I2F_Addr d d') (size : Nat) (vol : Bool) :
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memmove PInf (@MemoryModelPrimitivesV PInf) s d size vol)
-      (@memmove PFin (@MemoryModelPrimitivesV PFin) s′ d′ size vol) := by
+      (@memmove PFin (@MemoryModelPrimitivesV PFin) s' d' size vol) := by
   exact I2F_memS_bind _ _ _ _ _ _ _ (I2F_read_bytes _ _ hs size) (I2F_write_bytes _ _ hd)
 
-theorem I2F_memset (d : PInf.PTR.ptr) (d′ : PFin.PTR.ptr)
-    (hd : I2F_Addr d d′) (x : @memory_byte PInf) (y : @memory_byte PFin)
+theorem I2F_memset (d : PInf.PTR.ptr) (d' : PFin.PTR.ptr)
+    (hd : I2F_Addr d d') (x : @memory_byte PInf) (y : @memory_byte PFin)
     (h : I2F_memory_byte x y) (size : Nat) (vol : Bool) :
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memset PInf (@MemoryModelPrimitivesV PInf) d x size vol)
-      (@memset PFin (@MemoryModelPrimitivesV PFin) d′ y size vol) := by
+      (@memset PFin (@MemoryModelPrimitivesV PFin) d' y size vol) := by
   apply I2F_write_bytes _ _ hd
   induction size with
   | zero => exact .nil
@@ -58,19 +60,16 @@ theorem I2F_handle_memtransfer (overlap : Bool) (xs : List (@dvalue_base PInf)) 
   rcases h with _ | ⟨hn, h⟩ <;> try apply I2F_Merr
   rcases h with _ | ⟨hvol, h⟩ <;> try apply I2F_Merr
   cases h <;> cases hvol <;> try apply I2F_Merr
-  simp only [handle_memtransfer]
-  apply I2F_memS_bind _ (@Eq Nat) _ _ _ _ _
-  · cases hn <;> first
-      | apply I2F_Merr
-      | apply I2F_Mub_l
-      | exact .I2F_Mret _ _ rfl
-      | apply I2F_Mret; exact congrArg Int.toNat (by assumption : I2F_Iptr _ _)
-  · rintro n _ rfl
-    cases hd <;> cases hv <;> first
-      | apply I2F_Merr
-      | split <;> rename_i hc <;> try simp only [hc, if_true, if_false] <;>
-          first | exact .I2F_Mret _ _ trivial | apply I2F_Mub_l
-      | cases overlap <;> first | apply I2F_memcpy <;> assumption | apply I2F_memmove <;> assumption
+  cases hn <;> first | apply I2F_Merr | apply I2F_Mub_l | skip
+  all_goals try (rename_i hp; unfold I2F_Iptr at hp; subst_vars)
+  all_goals cases hd <;> cases hv <;> try apply I2F_Merr
+  all_goals simp only [handle_memtransfer, pure, Bind.bind, Semantics.Interfaces.Memory.memS_bind]; split <;> rename_i hc
+  all_goals first
+    | exact I2F_memcpy _ _ _ _ (by assumption) (by assumption) _ _
+    | exact I2F_memmove _ _ _ _ (by assumption) (by assumption) _ _
+    | exact .I2F_Mret _ _ trivial
+    | apply I2F_Mub_l
+    | rw [if_pos (by exact hc)]; exact .I2F_Mret _ _ trivial
 
 theorem I2F_handle_memcpy (xs : List (@dvalue_base PInf)) (ys : List (@dvalue_base PFin))
     (h : List.Forall₂ I2F_dvalue_base xs ys) :
@@ -96,22 +95,17 @@ theorem I2F_handle_memset (xs : List (@dvalue_base PInf)) (ys : List (@dvalue_ba
   rcases h with _ | ⟨hn, h⟩ <;> try apply I2F_Merr
   rcases h with _ | ⟨hvol, h⟩ <;> try apply I2F_Merr
   cases h <;> cases hvol <;> try apply I2F_Merr
-  simp only [handle_memset]
-  apply I2F_memS_bind _ I2F_memory_byte _ _ _ _ _
-  · cases hv <;> first
-      | apply I2F_Merr
-      | exact .I2F_Mret _ _ I2F_poison_memory_byte
-      | split <;> rename_i hc <;> try simp only [hc, if_true, if_false] <;>
-          first | exact .I2F_Mret _ _ (I2F_BYTE_I _) | apply I2F_Merr
-  · intro b b′ hb
-    apply I2F_memS_bind _ (@Eq Nat) _ _ _ _ _
-    · cases hn <;> first | apply I2F_Merr | apply I2F_Mub_l | exact .I2F_Mret _ _ rfl
-    · rintro n _ rfl
-      cases hd <;> first
-        | apply I2F_Merr
-        | exact I2F_memset _ _ (by assumption) b b′ hb n _
-        | split <;> rename_i hc <;> try simp only [hc, if_true, if_false] <;>
-            first | exact .I2F_Mret _ _ trivial | apply I2F_Mub_l
+  cases hv <;> first | apply I2F_Merr | skip
+  case' I2F_dvalue_Int sz v =>
+    by_cases h8 : (sz.val == 8) = true <;> simp only [handle_memset, h8, if_true, if_false] <;>
+      try apply I2F_Merr
+  all_goals cases hn <;> first | apply I2F_Merr | apply I2F_Mub_l | skip
+  all_goals cases hd <;> first | apply I2F_Merr | skip
+  all_goals simp only [handle_memset, pure, Bind.bind, Semantics.Interfaces.Memory.memS_bind]
+  all_goals first
+    | exact I2F_memset _ _ (by assumption) _ _ (I2F_BYTE_I _) _ _
+    | exact I2F_memset _ _ (by assumption) _ _ (I2F_BYTE_Mixed (by repeat constructor)) _ _
+    | split <;> first | exact .I2F_Mret _ _ trivial | apply I2F_Mub_l
 
 theorem I2F_handle_malloc (xs : List (@dvalue_base PInf)) (ys : List (@dvalue_base PFin))
     (h : List.Forall₂ I2F_dvalue_base xs ys) (align : Nat) :
@@ -140,25 +134,25 @@ theorem I2F_handle_free (xs : List (@dvalue_base PInf)) (ys : List (@dvalue_base
   · first | exact I2F_Free _ _ hp | rw [if_neg (by exact hc)]; exact I2F_Free _ _ hp
 
 private theorem intrinsicArgs {xs ys} (h : I2F_targs xs ys)
-    (acc : List (@dvalue_base PInf)) (acc′ : List (@dvalue_base PFin))
-    (ha : List.Forall₂ I2F_dvalue_base acc acc′) : I2F_EOU (List.Forall₂ I2F_dvalue_base)
+    (acc : List (@dvalue_base PInf)) (acc' : List (@dvalue_base PFin))
+    (ha : List.Forall₂ I2F_dvalue_base acc acc') : I2F_EOU (List.Forall₂ I2F_dvalue_base)
       (List.mapM.loop (fun a ↦ @dvalue_to_dvalue_base PInf a.2) xs acc)
-      (List.mapM.loop (fun a ↦ @dvalue_to_dvalue_base PFin a.2) ys acc′) := by
-  induction h generalizing acc acc′ with
+      (List.mapM.loop (fun a ↦ @dvalue_to_dvalue_base PFin a.2) ys acc') := by
+  induction h generalizing acc acc' with
   | nil => exact I2F_EOU_ret _ _ (List.forall₂_reverse_iff.mpr ha)
   | cons hab _ ih =>
     exact I2F_EOU_bind _ _ (I2F_dvalue_to_dvalue_base hab.2)
-      (fun a b hr ↦ ih (a :: acc) (b :: acc′) (.cons hr ha))
+      (fun a b hr ↦ ih (a :: acc) (b :: acc') (.cons hr ha))
 
-theorem I2F_handle_intrinsicM (e : @IntrinsicRequest PInf) (e′ : @IntrinsicRequest PFin)
-    (h : I2FE_Intrinsic e e′) :
-    I2F_memS I2F_State (fun x y ↦ I2FA_Intrinsic e x e′ y)
+theorem I2F_handle_intrinsicM (e : @IntrinsicRequest PInf) (e' : @IntrinsicRequest PFin)
+    (h : I2FE_Intrinsic e e') :
+    I2F_memS I2F_State (fun x y ↦ I2FA_Intrinsic e x e' y)
       (@handle_intrinsicM PInf (@MemoryModelPrimitivesV PInf) e)
-      (@handle_intrinsicM PFin (@MemoryModelPrimitivesV PFin) e′) := by
+      (@handle_intrinsicM PFin (@MemoryModelPrimitivesV PFin) e') := by
   rcases e with ⟨t, name, args, va⟩
-  rcases e′ with ⟨t′, name′, args′, va′⟩
+  rcases e' with ⟨t', name', args', va'⟩
   rcases h with ⟨ht, hf, ha, _⟩
-  subst t′; subst name′
+  subst t'; subst name'
   unfold handle_intrinsicM
   apply I2F_memS_bind _ (List.Forall₂ I2F_dvalue_base) _ _ _ _ _
   · apply I2F_memS_lift

@@ -2,32 +2,33 @@ import PortChecks.SourceType
 import Vellvm.Theory.I2F.I2F_memory.Intrinsics
 
 open Vellvm.Semantics.DynamicValues Vellvm.Semantics.Implementations.Memory
+open Vellvm.Semantics.MemoryBytes
 open Vellvm.Semantics.LLVMEvents Vellvm.Theory.I2F.Refinement
 open Vellvm.Theory.I2F.I2F_memS
 open Vellvm.Theory.I2F.I2F_exp
 open Vellvm.Theory.I2F.I2F_memory
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_memcpy"
-  I2F_memcpy : ∀ (s d : PInf.PTR.ptr) (s′ d′ : PFin.PTR.ptr)
-    (hs : I2F_Addr s s′) (hd : I2F_Addr d d′) (size : Nat) (vol : Bool),
+  I2F_memcpy : ∀ (s d : PInf.PTR.ptr) (s' d' : PFin.PTR.ptr)
+    (hs : I2F_Addr s s') (hd : I2F_Addr d d') (size : Nat) (vol : Bool),
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memcpy PInf (@MemoryModelPrimitivesV PInf) s d size vol)
-      (@memcpy PFin (@MemoryModelPrimitivesV PFin) s′ d′ size vol)
+      (@memcpy PFin (@MemoryModelPrimitivesV PFin) s' d' size vol)
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_memmove"
-  I2F_memmove : ∀ (s d : PInf.PTR.ptr) (s′ d′ : PFin.PTR.ptr)
-    (hs : I2F_Addr s s′) (hd : I2F_Addr d d′) (size : Nat) (vol : Bool),
+  I2F_memmove : ∀ (s d : PInf.PTR.ptr) (s' d' : PFin.PTR.ptr)
+    (hs : I2F_Addr s s') (hd : I2F_Addr d d') (size : Nat) (vol : Bool),
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memmove PInf (@MemoryModelPrimitivesV PInf) s d size vol)
-      (@memmove PFin (@MemoryModelPrimitivesV PFin) s′ d′ size vol)
+      (@memmove PFin (@MemoryModelPrimitivesV PFin) s' d' size vol)
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_memset"
-  I2F_memset : ∀ (d : PInf.PTR.ptr) (d′ : PFin.PTR.ptr)
-    (hd : I2F_Addr d d′) (x : @memory_byte PInf) (y : @memory_byte PFin)
+  I2F_memset : ∀ (d : PInf.PTR.ptr) (d' : PFin.PTR.ptr)
+    (hd : I2F_Addr d d') (x : @memory_byte PInf) (y : @memory_byte PFin)
     (h : I2F_memory_byte x y) (size : Nat) (vol : Bool),
     I2F_memS I2F_State (fun (_ _ : Unit) ↦ True)
       (@memset PInf (@MemoryModelPrimitivesV PInf) d x size vol)
-      (@memset PFin (@MemoryModelPrimitivesV PFin) d′ y size vol)
+      (@memset PFin (@MemoryModelPrimitivesV PFin) d' y size vol)
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_malloc_bytes"
   I2F_malloc_bytes : ∀ (xs : List (@memory_byte PInf)) (ys : List (@memory_byte PFin))
@@ -79,8 +80,8 @@ open Vellvm.Theory.I2F.I2F_memory
       (@handle_free PFin (@MemoryModelPrimitivesV PFin) ys)
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_handle_intrinsicM"
-  I2F_handle_intrinsicM : ∀ (e : @IntrinsicRequest PInf) (e′ : @IntrinsicRequest PFin)
-    (h : I2FE_Intrinsic e e′),
-    I2F_memS I2F_State (fun x y ↦ I2FA_Intrinsic e x e′ y)
+  I2F_handle_intrinsicM : ∀ (e : @IntrinsicRequest PInf) (e' : @IntrinsicRequest PFin)
+    (h : I2FE_Intrinsic e e'),
+    I2F_memS I2F_State (fun x y ↦ I2FA_Intrinsic e x e' y)
       (@handle_intrinsicM PInf (@MemoryModelPrimitivesV PInf) e)
-      (@handle_intrinsicM PFin (@MemoryModelPrimitivesV PFin) e′)
+      (@handle_intrinsicM PFin (@MemoryModelPrimitivesV PFin) e')

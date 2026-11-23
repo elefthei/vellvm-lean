@@ -1,5 +1,7 @@
 import Vellvm.Theory.I2F.I2F_memory.Transfers
-import Vellvm.Theory.I2F.I2F_exp
+import Vellvm.Theory.I2F.I2F_exp.BytesReader
+import Vellvm.Theory.I2F.I2F_exp.BytesWriter
+import Vellvm.Theory.I2F.I2F_exp.Unsigned
 import Vellvm.Theory.I2F.Refinement.Events
 import Vellvm.Semantics.Implementations.Memory.Conversion
 import Vellvm.Semantics.Handlers.Memory

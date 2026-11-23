@@ -83,3 +83,4 @@ import Vellvm.Theory.I2F.I2F_memory
 import Vellvm.Theory.I2F.I2F_interp
 import Vellvm.Theory.I2F.I2F_toplevel
 import Vellvm.Theory.Equational
+import Vellvm.Semantics.Model

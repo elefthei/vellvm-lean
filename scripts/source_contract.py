@@ -58,7 +58,7 @@ def artifacts(repo):
         rows.append("\t".join((file, blobs[file], oracle_blobs[file], role, target)))
     return {
         "port/modules.tsv": rows,
-        "Vellvm.lean": imports,
+        "Vellvm.lean": [*imports, "import Vellvm.Semantics.Model"],
         "PortChecks.lean": ["import Vellvm", *checks],
     }
 

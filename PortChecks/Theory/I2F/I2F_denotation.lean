@@ -1,0 +1,10 @@
+import Vellvm.Theory.I2F.I2F_denotation
+import PortChecks.Theory.I2F.I2F_denotation.Core
+import PortChecks.Theory.I2F.I2F_denotation.Freeze
+import PortChecks.Theory.I2F.I2F_denotation.Attributes
+import PortChecks.Theory.I2F.I2F_denotation.Instructions
+import PortChecks.Theory.I2F.I2F_denotation.Terminators
+import PortChecks.Theory.I2F.I2F_denotation.CFG
+import PortChecks.Theory.I2F.I2F_denotation.Frames
+import PortChecks.Theory.I2F.I2F_denotation.Exceptions
+import PortChecks.Theory.I2F.I2F_denotation.Functions
