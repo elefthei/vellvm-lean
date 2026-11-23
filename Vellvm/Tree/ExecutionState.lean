@@ -16,19 +16,20 @@ variable {E F B D : Effect.{u}} {X St : Type u}
 inductive InterpCursor (h : (e : E.I) → Producer F D (E.O e)) (A : Type u) : Type u where
   | source (s : A)
   | afterAction (s : A)
-  | pending (e : E.I) (resume : E.O e → A) (s : (h e).S)
+  | pending (e : E.I) (resume : E.O e → A) (next : CachedNext (h e)) (s : (h e).S)
 
 namespace InterpCursor
 
 @[inline] def handlerHead (h : (e : E.I) → Producer F D (E.O e)) {A : Type u}
-    (e : E.I) (k : E.O e → A) (s : (h e).S) : CTreeF F D X (InterpCursor h A) :=
-  match (h e).next s with
+    (e : E.I) (k : E.O e → A) (n : CachedNext (h e)) (s : (h e).S) :
+    CTreeF F D X (InterpCursor h A) :=
+  match n.val s with
   | .ret x => .guard (.source (k x))
   | .stuck => .stuck
-  | .guard j => .guard (.pending e k j)
-  | .step j => .step (.pending e k j)
-  | .vis f l => .vis f fun a ↦ .pending e k (l a)
-  | .br c l => .br c fun a ↦ .pending e k (l a)
+  | .guard j => .guard (.pending e k n j)
+  | .step j => .step (.pending e k n j)
+  | .vis f l => .vis f fun a ↦ .pending e k n (l a)
+  | .br c l => .br c fun a ↦ .pending e k n (l a)
 
 end InterpCursor
 
@@ -39,7 +40,7 @@ def interp [sub : B -< D] (h : (e : E.I) → Producer F D (E.O e)) (p : Producer
   S := InterpCursor h p.S
   initial := .source p.initial
   next
-    | .pending e k s => InterpCursor.handlerHead h e k s
+    | .pending e k n s => InterpCursor.handlerHead h e k n s
     | .afterAction s => .guard (.source s)
     | .source s => match p.next s with
       | .ret x => .ret x
@@ -47,7 +48,9 @@ def interp [sub : B -< D] (h : (e : E.I) → Producer F D (E.O e)) (p : Producer
       | .guard j => .guard (.source j)
       | .step j => .step (.afterAction j)
       | .br b k => let ⟨c, back⟩ := sub.map b; .br c fun a ↦ .afterAction (k (back a))
-      | .vis e k => InterpCursor.handlerHead h e k (h e).initial
+      | .vis e k =>
+        let handler := h e
+        InterpCursor.handlerHead h e k ⟨handler.next, rfl⟩ handler.initial
 
 /-- The state supplied to a handler is part of its request; its answer carries the new state. -/
 abbrev StateRequest (E : Effect.{u}) (St : Type u) : Effect.{u} :=

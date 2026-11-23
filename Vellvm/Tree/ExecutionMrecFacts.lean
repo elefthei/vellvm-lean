@@ -18,21 +18,22 @@ namespace Mrec
 /-- The finite suspended callers are ordinary binds in the open, pre-interpretation tree. -/
 def kont : {i : Option D.I} → Stack ctx root i → Answer D X i → CTree (D ⊕ₑ E) B X
   | _, .done => pure
-  | _, .push _ k rest => fun x ↦ (body ctx root _).meaningAt (k x) >>= kont rest
+  | _, .push _ _ k rest => fun x ↦ (body ctx root _).meaningAt (k x) >>= kont rest
 
 def running {i} (st : Stack ctx root i) (s : (body ctx root i).S) : CTree E B X :=
   CTree.interp_mrec (fun d ↦ (ctx d).meaning) ((body ctx root i).meaningAt s >>= kont ctx root st)
 
 def spec : Cursor ctx root → CTree E B X
-  | ⟨true, st, s⟩ => .guard (running ctx root st s)
-  | ⟨false, st, s⟩ => running ctx root st s
+  | ⟨true, st, _, s⟩ => .guard (running ctx root st s)
+  | ⟨false, st, _, s⟩ => running ctx root st s
 
-theorem unfold_running {i} (st : Stack ctx root i) (s : (body ctx root i).S) :
-    (running ctx root st s).unfold = PF.map (CTreeF E B X) (spec ctx root) (run ctx root st s) := by
+theorem unfold_running {i} (st : Stack ctx root i) (t : CachedNext (body ctx root i))
+    (s : (body ctx root i).S) : (running ctx root st s).unfold =
+      PF.map (CTreeF E B X) (spec ctx root) (run ctx root st t s) := by
   have h := (CTree.fold_unfold ((body ctx root i).meaningAt s)).symm
   rw [observe_meaningAt] at h
   unfold running
-  rw [run]
+  rw [run, t.property]
   cases hs : (body ctx root i).next s with
   | ret x =>
     rw [hs] at h
@@ -40,7 +41,7 @@ theorem unfold_running {i} (st : Stack ctx root i) (s : (body ctx root i).S) :
     rw [h, CTree.pure_bind' x (kont ctx root st)]
     cases st with
     | done => simp [kont]; rfl
-    | push d k rest => exact unfold_running rest (k x)
+    | push d caller k rest => exact unfold_running rest caller (k x)
   | stuck =>
     rw [hs] at h
     change _ = CTree.stuck at h
@@ -72,9 +73,9 @@ termination_by structural st
 
 theorem unfold_spec (s : Cursor ctx root) :
     (spec ctx root s).unfold = PF.map (CTreeF E B X) (spec ctx root) (next ctx root s) := by
-  obtain ⟨flag, st, s⟩ := s
+  obtain ⟨flag, st, t, s⟩ := s
   cases flag with
-  | false => exact unfold_running ctx root st s
+  | false => exact unfold_running ctx root st t s
   | true => exact CTree.unfold_guard _
 
 end Mrec

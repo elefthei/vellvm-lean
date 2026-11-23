@@ -22,7 +22,7 @@ variable (h : (e : E.I) → Producer F D (E.O e)) (p : Producer E B X)
 def reference (den : p.S → CTree F D X) : InterpCursor h p.S → CTree F D X
   | .source i => den i
   | .afterAction i => (den i).guard
-  | .pending e k s => (h e).meaningAt s >>= fun a ↦ (den (k a)).guard
+  | .pending e k _ s => (h e).meaningAt s >>= fun a ↦ (den (k a)).guard
 
 private def sourceHead [B -< D] (den : p.S → CTree F D X) : CTreeF E B X p.S → CTree F D X
   | .ret x => .ret x
@@ -33,11 +33,11 @@ private def sourceHead [B -< D] (den : p.S → CTree F D X) : CTreeF E B X p.S �
   | .br b k => .br' b fun a ↦ (den (k a)).guard
 
 private theorem handler_unfold (den : p.S → CTree F D X) (e : E.I) (k : E.O e → p.S)
-    (s : (h e).S) :
+    (n : CachedNext (h e)) (s : (h e).S) :
     ((h e).meaningAt s >>= fun a ↦ (den (k a)).guard).unfold =
-      PF.map (CTreeF F D X) (reference h p den) (handlerHead h e k s) := by
+      PF.map (CTreeF F D X) (reference h p den) (handlerHead h e k n s) := by
   rw [CTree.unfold_bind, observe_meaningAt]
-  unfold handlerHead
+  simp only [handlerHead, n.property]
   cases (h e).next s <;> first | exact CTree.unfold_guard _ | rfl
 
 private theorem reference_unfold [sub : B -< D] (den : p.S → CTree F D X)
@@ -45,13 +45,15 @@ private theorem reference_unfold [sub : B -< D] (den : p.S → CTree F D X)
     (reference h p den c).unfold =
       PF.map (CTreeF F D X) (reference h p den) ((interp h p).next c) := by
   cases c with
-  | pending e k s => exact handler_unfold h p den e k s
+  | pending e k n s => exact handler_unfold h p den e k n s
   | afterAction i => exact CTree.unfold_guard _
   | source i =>
     change (den i).unfold = _
     rw [step i]
     cases hn : p.next i with
-    | vis e k => simpa only [interp, hn, sourceHead, meaning] using handler_unfold h p den e k (h e).initial
+    | vis e k =>
+      simpa only [interp, hn, sourceHead, meaning] using
+        handler_unfold h p den e k ⟨(h e).next, rfl⟩ (h e).initial
     | br b k =>
       simp only [sourceHead, CTree.br', CTree.unfold_br, interp, hn]
       rfl

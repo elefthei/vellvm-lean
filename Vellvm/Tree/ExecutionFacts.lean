@@ -93,26 +93,27 @@ theorem meaning_translate (h : (e : E.I) → (f : F.I) × (F.O f → E.O e))
 private def bindSpec (p : Producer E B X) (k : X → Producer E B Y) :
     (bind p k).S → CTree E B Y
   | .inl s => p.meaningAt s >>= fun x ↦ (k x).meaning
-  | .inr ⟨x, s⟩ => (k x).meaningAt s
+  | .inr c => (k c.arg).meaningAt c.state
 
 private theorem bindSpec_resume (p : Producer E B X) (k : X → Producer E B Y)
-    (x : X) (s : (k x).S) :
-    ((k x).meaningAt s).unfold = PF.map _ (bindSpec p k)
-      (PF.map _ (fun j ↦ Sum.inr (Sigma.mk x j)) ((k x).next s)) := by
+    (c : Active k) :
+    ((k c.arg).meaningAt c.state).unfold = PF.map _ (bindSpec p k) c.bindHead := by
+  rcases c with ⟨x, ⟨_, rfl⟩, s⟩
   rw [observe_meaningAt]
+  dsimp only [Active.bindHead]
   cases (k x).next s <;> rfl
 
 theorem meaning_bind (p : Producer E B X) (k : X → Producer E B Y) :
     eqit Eq false false (bind p k).meaning (p.meaning >>= fun x ↦ (k x).meaning) := by
   apply meaningAt_strict (bind p k) (bindSpec p k) _ (.inl p.initial)
-  rintro (s | ⟨x, s⟩)
+  rintro (s | c)
   · change (p.meaningAt s >>= _).unfold = _
     rw [CTree.unfold_bind, observe_meaningAt]
     dsimp only [bind]
     cases p.next s with
-    | ret x => exact bindSpec_resume p k x (k x).initial
+    | ret x => exact bindSpec_resume p k (Active.start k x)
     | _ => rfl
-  · exact bindSpec_resume p k x s
+  · exact bindSpec_resume p k c
 
 private def iterCont (body : X → Producer E B (X ⊕ Y)) : X ⊕ Y → CTree E B Y
   | .inl x => .guard (.iter (fun x ↦ (body x).meaning) x)
@@ -128,10 +129,10 @@ private theorem iter_eq_bind (body : X → Producer E B (X ⊕ Y)) (x : X) :
 theorem meaning_iter (body : X → Producer E B (X ⊕ Y)) (initial : X) :
     eqit Eq false false (iter body initial).meaning (CTree.iter (fun x ↦ (body x).meaning) initial) := by
   rw [iter_eq_bind]
-  let spec : (iter body initial).S → CTree E B Y := fun ⟨x, s⟩ ↦
-    (body x).meaningAt s >>= iterCont body
-  apply meaningAt_strict (iter body initial) spec _ ⟨initial, (body initial).initial⟩
-  rintro ⟨x, s⟩
+  let spec : (iter body initial).S → CTree E B Y := fun c ↦
+    (body c.arg).meaningAt c.state >>= iterCont body
+  apply meaningAt_strict (iter body initial) spec _ (Active.start body initial)
+  rintro ⟨x, ⟨_, rfl⟩, s⟩
   change ((body x).meaningAt s >>= _).unfold = _
   rw [CTree.unfold_bind, observe_meaningAt]
   dsimp only [iter]

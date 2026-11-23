@@ -56,33 +56,53 @@ def translate (h : (e : E.I) → (f : F.I) × (F.O f → E.O e)) (p : Producer E
   | .vis e k => let ⟨f, back⟩ := h e; .vis f fun x ↦ k (back x)
   | .br b k => .br b k⟩
 
+/-- Only the transition survives erasure; its identity is for the meaning proofs. -/
+abbrev CachedNext (p : Producer E B X) := {f : p.S → CTreeF E B X p.S // f = p.next}
+
+/-- A continuation or loop body that has been entered once and is still running. -/
+structure Active (k : X → Producer E B Y) where
+  arg : X
+  next : CachedNext (k arg)
+  state : (k arg).S
+
+@[inline] def Active.start (k : X → Producer E B Y) (x : X) : Active k :=
+  let p := k x
+  ⟨x, ⟨p.next, rfl⟩, p.initial⟩
+
+@[inline] def Active.bindHead {k : X → Producer E B Y} {A : Type u} :
+    Active k → CTreeF E B Y (Sum A (Active k))
+  | ⟨x, n, s⟩ => match n.val s with
+    | .ret y => .ret y
+    | .stuck => .stuck
+    | .guard j => .guard (.inr ⟨x, n, j⟩)
+    | .step j => .step (.inr ⟨x, n, j⟩)
+    | .vis e l => .vis e fun a ↦ .inr ⟨x, n, l a⟩
+    | .br b l => .br b fun a ↦ .inr ⟨x, n, l a⟩
+
 def bind (p : Producer E B X) (k : X → Producer E B Y) : Producer E B Y where
-  S := Sum p.S (Σ x, (k x).S)
+  S := Sum p.S (Active k)
   initial := .inl p.initial
-  next := fun s ↦
-    let resume := fun (x : X) (s' : (k x).S) ↦ PF.map (CTreeF E B Y)
-      (fun j ↦ Sum.inr (Sigma.mk x j)) ((k x).next s')
-    match s with
+  next
     | .inl i => match p.next i with
-      | .ret x => resume x (k x).initial
+      | .ret x => (Active.start k x).bindHead
       | .stuck => .stuck
       | .guard j => .guard (.inl j)
       | .step j => .step (.inl j)
       | .vis e l => .vis e fun x ↦ .inl (l x)
       | .br b l => .br b fun x ↦ .inl (l x)
-    | .inr ⟨x, j⟩ => resume x j
+    | .inr c => c.bindHead
 
 def iter (body : X → Producer E B (Sum X Y)) (x : X) : Producer E B Y where
-  S := Σ x, (body x).S
-  initial := ⟨x, (body x).initial⟩
-  next := fun ⟨x, s⟩ ↦ match (body x).next s with
-    | .ret (.inl x') => .guard ⟨x', (body x').initial⟩
+  S := Active body
+  initial := Active.start body x
+  next := fun ⟨x, n, s⟩ ↦ match n.val s with
+    | .ret (.inl x') => .guard (Active.start body x')
     | .ret (.inr y) => .ret y
     | .stuck => .stuck
-    | .guard j => .guard ⟨x, j⟩
-    | .step j => .step ⟨x, j⟩
-    | .vis e k => .vis e fun y ↦ ⟨x, k y⟩
-    | .br b k => .br b fun y ↦ ⟨x, k y⟩
+    | .guard j => .guard ⟨x, n, j⟩
+    | .step j => .step ⟨x, n, j⟩
+    | .vis e k => .vis e fun y ↦ ⟨x, n, k y⟩
+    | .br b k => .br b fun y ↦ ⟨x, n, k y⟩
 
 end Producer
 end Vellvm.Tree
