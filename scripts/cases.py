@@ -3,6 +3,7 @@ import base64
 from concurrent.futures import ProcessPoolExecutor
 import hashlib
 import json
+import mmap
 import os
 from pathlib import Path
 import re
@@ -17,9 +18,18 @@ LIBS = tuple(f'{LIBDIR}/{name}.ll' for name in ('c-lib', 'printf', 'rust-intrins
 ARRAYS = 'tractor/c2rust-tests/arrays/'
 TRACTOR = tuple(ARRAYS + name + '.ll' for name in ('arrays', 'incomplete_arrays', 'packed_arrays', 'variable_arrays')) + (LIBS[2],)
 DEBUG = 'Examples/debug.ll'
+EXAMPLES = frozenset({DEBUG, 'Examples/choices.ll'})
 ADD = 'tests/ll/add.ll'
 DIRECT = {ADD, 'tests/ll/factorial.ll', 'tests/ll/gep2.ll', 'tests/ub/udiv.ll',
           'tests/ll/byte-freeze.ll', 'tests/perf/calls-fib.ll'}
+# The only approved departures from the 8 MiB oracle. The native programs never consult these names.
+AST_OVERFLOWS = frozenset({
+    'tests/llvm-arith/i1/binop-poison.ll', 'tests/llvm-arith/i1/cast-poison.ll',
+    'tests/memory/complex/nbody.ll', 'tests/memory/complex/nbody2.ll',
+    'tests/perf/block-jumps.ll', 'tests/perf/locals-chain.ll',
+    'tests/undef/yarpgen/yarpgenv1_1.ll', 'tractor/c2rust-tests/arrays/array_tests.ll',
+})
+CONTROL_STACK = 2 << 30
 # assertion.ml's four anchored Str patterns; NOASSERT and historical directives are not tests.
 ASSERT = re.compile(rb'^[ \t]*;[ \t]*ASSERT[ \t]+(?:EQ[ \t]*:.*=|(?:SUCCEEDS|FAILS)[ \t]*:|UB[ \t]+[0-9]+[ \t]*:)')
 MAIN = re.compile(rb'^[ \t]*define\b[^;\n]*?@(?:main|"main")[ \t]*\(', re.M)
@@ -51,20 +61,20 @@ def clang_version():
         raise ValueError(f'pretty-print cases require clang 20.1.2 on PATH, found: {version!r}')
 
 
-def limits():
+def limits(stack):
     # One process group per invocation (Clang mode starts descendants). Limits are not golden outcomes.
     resource.setrlimit(resource.RLIMIT_CPU, (240, 241))
     # The native OCaml AST printer overflows the reference host's 8 MiB stack on several large inputs.
-    resource.setrlimit(resource.RLIMIT_STACK, (8 << 20, 8 << 20))
+    resource.setrlimit(resource.RLIMIT_STACK, (stack, stack))
     resource.setrlimit(resource.RLIMIT_FSIZE, (512 << 20, 512 << 20))
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
 
 
-def run(exe, argv, cwd, stdin):
+def run(exe, argv, cwd, stdin, stack=8 << 20):
     env = dict(os.environ, LC_ALL='C', TZ='UTC', OCAMLRUNPARAM='', LLVM_DISABLE_CRASH_REPORT='1')
     with tempfile.TemporaryFile() as out, tempfile.TemporaryFile() as err:
         with subprocess.Popen([exe, *argv], cwd=cwd, env=env, stdin=subprocess.PIPE, stdout=out, stderr=err,
-                              start_new_session=True, preexec_fn=limits) as proc:
+                              start_new_session=True, preexec_fn=lambda: limits(stack)) as proc:
             try:
                 proc.communicate(stdin, timeout=600)
             except subprocess.TimeoutExpired:
@@ -281,6 +291,47 @@ def run_fixture(task):
     return row
 
 
+def original_ast_overflow(row):
+    """Only the eight published cases may differ, and only on this exact frontend invocation."""
+    path = row['path']
+    overflows = [(case['name'], step) for case in row['runs'] for step in case['steps']
+                 if step['category'] == 'stack-overflow']
+    if path not in AST_OVERFLOWS and not overflows:
+        return None
+    argv = ['-op', 'output', '-print-ast', path]
+    if path not in AST_OVERFLOWS or len(overflows) != 1:
+        raise ValueError(f'{path}: unexpected set of OCaml stack overflows')
+    case, original = overflows[0]
+    if (case != 'ast' or original['tool'] != 'frontend' or original['argv'] != argv or original['exit'] != 2
+            or original['stderr_b64'] != b64(b'Fatal error: exception Stack overflow\n')):
+        raise ValueError(f'{path}: unexpected original AST oracle result')
+    return original
+
+
+def complete_ast_control(inputs, frontend, path, original):
+    # Start in a fresh sandbox: reusing the partial .v.ast would make the oracle choose a suffixed filename.
+    with tempfile.TemporaryDirectory(prefix='vellvm-ast-control-') as tmp:
+        cwd = Path(tmp)
+        src = cwd / path
+        src.parent.mkdir(parents=True)
+        shutil.copyfile(inputs / path, src)
+        code, out, err = run(frontend.resolve(), original['argv'], cwd, b'', CONTROL_STACK)
+        if code or err:
+            raise ValueError(f'{path}: enlarged-stack AST oracle failed: exit={code}, stderr={err!r}')
+        files = artifacts(cwd / 'output')
+        if len(files) != 1 or files.keys() != original['artifacts'].keys():
+            raise ValueError(f'{path}: expected exactly the original AST output filename')
+        name, info = next(iter(files.items()))
+        if info['size'] <= original['artifacts'][name]['size']:
+            raise ValueError(f'{path}: enlarged-stack AST did not extend the partial artifact')
+        with (cwd / name).open('rb') as f, mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as data:
+            if data.find(b'\nInternal Coq representation of the ast:\n\n[') < 0 or data[-1:] != b']':
+                raise ValueError(f'{path}: enlarged-stack AST lacks its internal list header or closing bracket')
+        return {'stack_bytes': CONTROL_STACK, 'step': {
+            'tool': 'frontend', 'argv': original['argv'], 'exit': code, 'category': category(code, out, err),
+            'stdout_b64': b64(out), 'stderr_b64': b64(err), 'artifacts': files}}
+
+
 def fixture_rows(inputs, vellvm, frontend, paths):
     clang_version()
     for exe in (vellvm, frontend):
@@ -295,13 +346,15 @@ def write_baseline(inputs: Path, vellvm: Path, frontend: Path, output: Path) -> 
     """Write cases.jsonl from the pinned oracle binaries. Never call with native binaries."""
     paths = inputs_at(inputs)
     # Both pins already track all thirteen generator targets: 542 tests, 8 .ll-bad,
-    # 3 libraries, 5 tractor inputs, 12 utilities and the debugger witness.
-    if len(paths) != 571 or not (DIRECT | {DEBUG} | set(LIBS) | set(TRACTOR)) <= set(paths):
+    # 3 libraries, 5 tractor inputs, 12 utilities, plus the two local acceptance witnesses.
+    if len(paths) != 570 + len(EXAMPLES) or not (DIRECT | AST_OVERFLOWS | EXAMPLES | set(LIBS) | set(TRACTOR)) <= set(paths):
         raise ValueError(f'incomplete fixture corpus: {inputs}')
     with tempfile.NamedTemporaryFile(dir=output.parent, mode='w', encoding='utf-8', delete=False) as stream:
         tmp = Path(stream.name)
         try:
             for row in fixture_rows(inputs, vellvm, frontend, paths):
+                if original := original_ast_overflow(row):
+                    row['ast_stack_control'] = complete_ast_control(inputs, frontend, row['path'], original)
                 stream.write(json.dumps(row, separators=(',', ':')) + '\n')
             stream.close()
             tmp.replace(output)

@@ -42,7 +42,8 @@ def regenerate(repo, work, check):
             rel = path.relative_to(corpus)
             compare(path, ROOT / rel, rel)
     (corpus / "Examples").mkdir()
-    shutil.copyfile(ROOT / "Examples/debug.ll", corpus / "Examples/debug.ll")
+    for name in ("debug.ll", "choices.ll"):
+        shutil.copyfile(ROOT / "Examples" / name, corpus / "Examples" / name)
     cases.write_baseline(corpus, main, frontend, port / "cases.jsonl")
     for expected in sorted(evidence.rglob("*")):
         if expected.is_file():

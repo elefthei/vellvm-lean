@@ -6,7 +6,7 @@ import csv
 import json
 import sys
 
-from cases import DEBUG, fixture_rows, inputs_at, sha
+from cases import AST_OVERFLOWS, CONTROL_STACK, EXAMPLES, fixture_rows, inputs_at, original_ast_overflow, sha
 from source_contract import ROOT
 
 
@@ -28,8 +28,10 @@ def expected_cases():
     with (ROOT / 'port/inputs.tsv').open(encoding='utf-8') as stream:
         manifest = {row['path']: row['sha256'] for row in csv.DictReader(stream, delimiter='\t')}
     paths = inputs_at(ROOT)
-    same_paths('fixture inventory', {p for p in manifest if p.endswith(('.ll', '.ll-bad'))} | {DEBUG}, paths)
+    same_paths('fixture inventory', {p for p in manifest if p.endswith(('.ll', '.ll-bad'))} | EXAMPLES, paths)
     same_paths('oracle coverage', paths, expected)
+    same_paths('enlarged-stack oracle controls', AST_OVERFLOWS,
+               {p for p, row in expected.items() if 'ast_stack_control' in row})
     for p, digest in manifest.items():
         if sha((ROOT / p).read_bytes()) != digest:
             raise ValueError(f'{p}: file differs from port/inputs.tsv')
@@ -62,15 +64,38 @@ def differences(want, got, key):
         yield f'{key}: expected {want!r}, got {got!r}'
 
 
+def native_expectation(row):
+    """Substitute exactly one frozen reference step, never a value inferred from native output."""
+    original = original_ast_overflow(row)
+    if original is None:
+        return row, None
+    control = row['ast_stack_control']
+    p = row['path']
+    step = control['step']
+    artifact = 'output/' + p.rsplit('/', 1)[1].removesuffix('.ll') + '.v.ast'
+    if (control['stack_bytes'] != CONTROL_STACK or step['tool'] != original['tool'] or step['argv'] != original['argv']
+            or step['exit'] != 0 or step['category'] != 'success' or step['stderr_b64'] != ''
+            or step['artifacts'].keys() != {artifact} or original['artifacts'].keys() != {artifact}
+            or step['artifacts'][artifact]['size'] <= original['artifacts'][artifact]['size']):
+        raise ValueError(f'{p}: invalid enlarged-stack AST oracle control')
+    want = {k: v for k, v in row.items() if k != 'ast_stack_control'}
+    want['runs'] = [{**c, 'steps': [step if s is original else s for s in c['steps']]} for c in row['runs']]
+    return want, step
+
+
 def main():
     paths, expected = expected_cases()
     bin_dir = ROOT / '.lake/build/bin'
     mismatches = runs = upstream_skips = assertions = 0
     failures = Counter()
+    passed_controls = []
     for row in fixture_rows(ROOT, bin_dir / 'vellvm', bin_dir / 'frontend', paths):
         p = row['path']
         golden = expected[p]
-        for mismatch in differences(golden, row, p):
+        want, control = native_expectation(golden)
+        if control and any(c['name'] == 'ast' and c['steps'] == [control] for c in row['runs']):
+            passed_controls.append(p)
+        for mismatch in differences(want, row, p):
             print(mismatch, file=sys.stderr)
             mismatches += 1
         for case in golden['runs']:
@@ -85,6 +110,10 @@ def main():
     print(f'{len(paths)} inputs, {runs} invocations, {assertions} source-file assertions with a suite result')
     print(f'Frozen nonzero outcomes: {dict(sorted(failures.items()))}; '
           f'{upstream_skips} pretty-print comparisons skipped by upstream Clang gate')
+    print(f'Intentional AST robustness differences matched at the normal stack limit: '
+          f'{len(passed_controls)}/{len(AST_OVERFLOWS)} complete artifacts')
+    for p in passed_controls:
+        print(f'  {p}')
     print(f'Native comparison differences: {mismatches}')
     return int(mismatches != 0)
 
