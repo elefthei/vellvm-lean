@@ -36,7 +36,8 @@ jobs:
       - name: Install reference build dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y opam make perl m4 pkg-config libgmp-dev clang-20=1:20.1.2-0ubuntu1~24.04.3
+          # opam's conf-clang requires the unversioned Ubuntu package; PATH still selects 20.1.2.
+          sudo apt-get install -y opam make perl m4 pkg-config libgmp-dev clang clang-20=1:20.1.2-0ubuntu1~24.04.3
           echo /usr/lib/llvm-20/bin >> "$GITHUB_PATH"
           opam init --bare --disable-sandboxing -y
       - name: Regenerate the formal and executable evidence separately

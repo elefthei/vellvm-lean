@@ -14,9 +14,11 @@ import subprocess
 import tempfile
 
 LIBDIR = 'src/libll'
-LIBS = tuple(f'{LIBDIR}/{name}.ll' for name in ('c-lib', 'printf', 'rust-intrinsics'))
+# Pin the original oracle's link order. Its -L reverses find output, which varies by filesystem
+# and changes modeled global addresses (and therefore alignment-sensitive program behavior).
+LIBS = tuple(f'{LIBDIR}/{name}.ll' for name in ('c-lib', 'rust-intrinsics', 'printf'))
 ARRAYS = 'tractor/c2rust-tests/arrays/'
-TRACTOR = tuple(ARRAYS + name + '.ll' for name in ('arrays', 'incomplete_arrays', 'packed_arrays', 'variable_arrays')) + (LIBS[2],)
+TRACTOR = tuple(ARRAYS + name + '.ll' for name in ('arrays', 'incomplete_arrays', 'packed_arrays', 'variable_arrays')) + (f'{LIBDIR}/rust-intrinsics.ll',)
 DEBUG = 'Examples/debug.ll'
 EXAMPLES = frozenset({DEBUG, 'Examples/choices.ll'})
 ADD = 'tests/ll/add.ll'
@@ -35,6 +37,10 @@ ASSERT = re.compile(rb'^[ \t]*;[ \t]*ASSERT[ \t]+(?:EQ[ \t]*:.*=|(?:SUCCEEDS|FAI
 MAIN = re.compile(rb'^[ \t]*define\b[^;\n]*?@(?:main|"main")[ \t]*\(', re.M)
 SPAN = re.compile(rb'\[([^][\r\n]+?):(\d+)\.(\d+)-(\d+)\.(\d+)\]')
 SUMMARY = re.compile(rb'\nPassed: (\d+)/(\d+)\nFailed: (\d+)/(\d+)\n+\Z')
+
+
+def link_args(paths):
+    return [arg for path in paths for arg in ('-l', path)]
 
 
 def inputs_at(root):
@@ -224,24 +230,23 @@ def run_fixture(task):
     if bad_ext:
         case('original-extension', [('frontend', '-print-ast', path)], files={path: data})
     if ids or path == DEBUG:
-        if path == ARRAYS + 'array_tests.ll':
-            links = TRACTOR
-            args = [a for dep in links for a in ('-l', dep)]
-        else:
-            links, args = LIBS, ['-L', LIBDIR]
-        case('source-assertions', [('vellvm', *args, '-v', '-test-file', llvm)], links=links)
+        links = TRACTOR if path == ARRAYS + 'array_tests.ll' else LIBS
+        case('source-assertions', [('vellvm', *link_args(links), '-v', '-test-file', llvm)], links=links)
     if path in DIRECT:
         case('direct-assertions', [('vellvm', '-test-file', llvm)])
     if 'entry-main' in roles:
         if path == ARRAYS + 'array_tests.ll':
-            links, args = TRACTOR, [a for dep in TRACTOR for a in ('-l', dep)]
+            links, args = TRACTOR, link_args(TRACTOR)
         elif path.startswith('utilities/vaargs/tests/'):
             links = ('utilities/vaargs/printf-src/printf.ll',)
             args = ['-l', *links]
         elif path == 'tests/ll/factorial.ll' or path == DEBUG:
             links, args = (), []
-        else:
+        elif path == 'tests/ll/hello.ll':
+            # Keep an end-to-end -L case whose observable result does not depend on link order.
             links, args = LIBS, ['-L', LIBDIR]
+        else:
+            links, args = LIBS, link_args(LIBS)
         case('interpret-main', [('vellvm', *args, '-i', llvm)], links=links)
     if path == ADD:
         case('emit-and-reparse', [('vellvm', '-emit-llvm', '-op', 'emitted', llvm),
