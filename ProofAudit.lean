@@ -78,7 +78,8 @@ def audit (env : Environment) (port : System.FilePath) : IO Unit := do
         | _ => fail s!"{key}: missing or ambiguous constructor/field {n}"
     let info ← requireInfo env n
     let some idx := env.getModuleIdxFor? n | fail s!"{n}: unknown provenance"
-    unless env.header.moduleNames[idx.toNat]! == mod do fail s!"{n}: expected in {mod}"
+    unless mod.isPrefixOf env.header.moduleNames[idx.toNat]! do
+      fail s!"{n}: expected in {mod} or one of its implementation submodules"
     let required := role == "proof" || role == "instance"
     if required then
       unless info.hasValue (allowOpaque := true) && !env.isProjectionFn n do

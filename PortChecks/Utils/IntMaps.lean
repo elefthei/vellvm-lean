@@ -1,5 +1,6 @@
 import PortChecks.SourceType
 import Vellvm.Utils.IntMaps
+import PortChecks.Utils.IntMaps.Derived
 
 open Vellvm.Utils.IntMaps
 universe u
