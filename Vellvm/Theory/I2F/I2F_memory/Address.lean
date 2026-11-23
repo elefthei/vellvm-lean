@@ -46,9 +46,12 @@ theorem I2F_coerce_integer_to_int (b : Option Positive) (z : Int) : I2F_EOU I2F_
 
 theorem I2F_no_overlap (a b : PInf.PTR.ptr) (n : Nat) (a' b' : PFin.PTR.ptr) (m : Nat)
     (ha : I2F_Addr a a') (hb : I2F_Addr b b') :
-    @no_overlap _ _ (@overlaps_ptoi _ _ PInf.P2I) a n b m =
-      @no_overlap _ _ (@overlaps_ptoi _ _ PFin.P2I) a' n b' m := by
-  simp only [no_overlap, overlaps_ptoi, I2F_Addr_ptr_to_int a a' ha, I2F_Addr_ptr_to_int b b' hb]
+    @no_overlap PInf.PROV PInf.PTR (@overlaps_ptoi PInf.PROV PInf.PTR PInf.P2I) a n b m =
+      @no_overlap PFin.PROV PFin.PTR (@overlaps_ptoi PFin.PROV PFin.PTR PFin.P2I) a' n b' m := by
+  let apart (x y : Int) := !(decide (x ≤ y + Int.ofNat m - 1) && decide (y ≤ x + Int.ofNat n - 1))
+  change apart (PInf.P2I.ptr_to_int a) (PInf.P2I.ptr_to_int b) =
+    apart (PFin.P2I.ptr_to_int a') (PFin.P2I.ptr_to_int b')
+  rw [I2F_Addr_ptr_to_int a a' ha, I2F_Addr_ptr_to_int b b' hb]
 
 theorem generate_num_poison_bytes_h_0 {Pa : Params} (start : Nat) :
     @generate_num_poison_bytes_h Pa start 0 = [] := rfl

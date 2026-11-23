@@ -29,8 +29,8 @@ open Vellvm.Syntax.DynamicTypes
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|I2F_no_overlap"
   I2F_no_overlap : ∀ (a b : PInf.PTR.ptr) (n : Nat) (a' b' : PFin.PTR.ptr) (m : Nat),
     I2F_Addr a a' → I2F_Addr b b' →
-    @no_overlap _ _ (@overlaps_ptoi _ _ PInf.P2I) a n b m =
-      @no_overlap _ _ (@overlaps_ptoi _ _ PFin.P2I) a' n b' m
+    @no_overlap PInf.PROV PInf.PTR (@overlaps_ptoi PInf.PROV PInf.PTR PInf.P2I) a n b m =
+      @no_overlap PFin.PROV PFin.PTR (@overlaps_ptoi PFin.PROV PFin.PTR PFin.P2I) a' n b' m
 
 #source_check "src/rocq/Theory/I2F/I2F_memory.v|Vellvm.Theory.I2F.I2F_memory|generate_num_poison_bytes_h_0"
   generate_num_poison_bytes_h_0 : ∀ {Pa : Params} (start : Nat),
