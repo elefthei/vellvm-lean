@@ -1,0 +1,736 @@
+source	module	sections	byte_start	byte_end	line_start	line_end	lean_role	command
+src/rocq/Numeric/Archi.v	Vellvm.Numeric.Archi		2440	2659	65	69	proof reduction control	Global Opaque ptr64 big_endian splitlong default_nan_64 choose_nan_64 default_nan_32 choose_nan_32 fma_order fma_invalid_mul_is_nan float_of_single_preserves_sNaN.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1538	1580	32	32	proof tactic	Ltac inv H
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1582	1669	34	35	proof tactic	Ltac predSpec pred predspec x y
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1671	1758	37	38	proof tactic	Ltac caseEq name
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1760	1806	40	41	proof tactic	Ltac destructEq name
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1808	1964	43	48	proof tactic	Ltac decEq
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		1966	2025	50	51	proof tactic	Ltac byContradiction
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		2027	2085	53	54	proof tactic	Ltac liaContradiction
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		2165	4668	59	94	proof tactic	Ltac exploit x
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		4804	4822	99	99	proof reduction control	Global Opaque peq.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		5360	5395	124	124	proof search/rewrite rule	Global Hint Resolve Plt_ne: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		5630	5667	135	135	proof search/rewrite rule	Global Hint Resolve Plt_succ: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		5822	5859	142	142	proof search/rewrite rule	Global Hint Resolve Plt_succ: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		6231	6249	158	158	proof reduction control	Global Opaque plt.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		6839	6904	183	183	proof search/rewrite rule	Global Hint Resolve Ple_refl Plt_Ple Ple_succ Plt_strict: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		6906	6945	185	185	proof tactic	Ltac xliaContradiction
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		9216	9235	278	278	notation scope	Open Scope Z_scope.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		17033	17059	576	576	proof reduction control	Global Opaque Zdivide_dec.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		19111	19135	657	657	proof reduction control	Global Opaque option_eq.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		19820	19862	683	683	proof search/rewrite rule	Global Hint Resolve in_eq in_cons: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		20160	20201	697	697	proof search/rewrite rule	Global Hint Resolve nth_error_in: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		20343	20385	704	704	proof search/rewrite rule	Global Hint Resolve nth_error_nil: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		22755	22797	795	795	proof search/rewrite rule	Global Hint Resolve incl_cons_inv: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		23148	23225	811	811	proof search/rewrite rule	Global Hint Resolve incl_tl incl_refl incl_app_inv_l incl_app_inv_r: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		33115	33198	1158	1158	proof search/rewrite rule	Global Hint Resolve is_tail_refl is_tail_cons is_tail_in is_tail_cons_left: coqlib.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		36726	36766	1294	1294	elaboration coercion	Coercion proj_sumbool: sumbool >-> bool.
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		37089	37442	1308	1317	proof tactic	Ltac InvBooleans
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		39814	39905	1420	1421	term notation	Notation "x :.: l" := (ncons x l) (at level 60, right associativity).
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		39907	39952	1423	1423	term notation	Notation "[ x .; y ]" := (ncons x (nbase y)).
+src/rocq/Numeric/Rocqlib.v	Vellvm.Numeric.Rocqlib		41580	41670	1481	1482	term notation	Notation "x +.+ y" := (napp x y) (right associativity, at level 60).
+src/rocq/Numeric/Zbits.v	Vellvm.Numeric.Zbits		16325	16338	521	521	proof reduction control	Opaque Z.mul.
+src/rocq/Numeric/Zbits.v	Vellvm.Numeric.Zbits		26409	26423	847	847	proof reduction control	Opaque Z.log2.
+src/rocq/Numeric/IEEE754_extra.v	Vellvm.Numeric.IEEE754_extra		1638	1663	30	30	notation scope	Local Open Scope Z_scope.
+src/rocq/Numeric/IEEE754_extra.v	Vellvm.Numeric.IEEE754_extra	Extra_ops	1980	2014	41	41	term abbreviation	Notation emin := (emin prec emax).
+src/rocq/Numeric/IEEE754_extra.v	Vellvm.Numeric.IEEE754_extra	Extra_ops	2015	2049	42	42	term abbreviation	Notation fexp := (fexp prec emax).
+src/rocq/Numeric/IEEE754_extra.v	Vellvm.Numeric.IEEE754_extra	Extra_ops	2050	2100	43	43	term abbreviation	Notation binary_float := (binary_float prec emax).
+src/rocq/Numeric/IEEE754_extra.v	Vellvm.Numeric.IEEE754_extra	Extra_ops	3686	3735	100	100	proof tactic	Ltac try_not_eq
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	21471	21506	691	691	proof search/rewrite rule	Hint Resolve modulus_pos: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	21605	21637	697	697	proof search/rewrite rule	Hint Resolve eqm_refl: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	21717	21750	702	702	proof search/rewrite rule	Hint Resolve eqm_refl2: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	21826	21857	706	706	proof search/rewrite rule	Hint Resolve eqm_sym: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	21950	21983	710	710	proof search/rewrite rule	Hint Resolve eqm_trans: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	22109	22145	715	715	proof search/rewrite rule	Hint Resolve eqm_small_eq: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	22250	22281	720	720	proof search/rewrite rule	Hint Resolve eqm_add: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	22365	22396	725	725	proof search/rewrite rule	Hint Resolve eqm_neg: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	22501	22532	730	730	proof search/rewrite rule	Hint Resolve eqm_sub: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	22639	22671	735	735	proof search/rewrite rule	Hint Resolve eqm_mult: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	23065	23106	750	750	proof search/rewrite rule	Hint Resolve eqm_unsigned_repr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	23281	23324	758	758	proof search/rewrite rule	Hint Resolve eqm_unsigned_repr_l: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	23484	23527	766	766	proof search/rewrite rule	Hint Resolve eqm_unsigned_repr_r: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	23844	23882	781	781	proof search/rewrite rule	Hint Resolve unsigned_range: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	24035	24075	789	789	proof search/rewrite rule	Hint Resolve unsigned_range_2: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	24586	24623	808	808	proof search/rewrite rule	Hint Resolve repr_unsigned: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	24802	24837	816	816	proof search/rewrite rule	Hint Resolve repr_signed: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	24839	24851	818	818	proof reduction control	Opaque repr.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	25180	25217	831	831	proof search/rewrite rule	Hint Resolve unsigned_repr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	52801	52845	1755	1755	proof search/rewrite rule	Hint Rewrite bits_zero bits_mone : bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	52847	52945	1757	1758	proof tactic	Ltac bit_solve
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	55426	55484	1836	1836	proof search/rewrite rule	Hint Rewrite bits_and bits_or bits_xor bits_not: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	63009	63022	2149	2149	proof reduction control	Opaque Z.mul.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	65418	65469	2244	2244	proof search/rewrite rule	Hint Rewrite bits_shl bits_shru bits_shr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	73962	73979	2530	2530	proof reduction control	Opaque zwordsize.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	73995	74017	2532	2532	proof reduction control	Transparent zwordsize.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	75050	75067	2566	2566	proof reduction control	Opaque zwordsize.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	75285	75307	2574	2574	proof reduction control	Transparent zwordsize.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	75314	75355	2577	2577	proof search/rewrite rule	Hint Rewrite bits_rol bits_ror: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers	MakeInt	101501	101552	3380	3380	proof search/rewrite rule	Hint Rewrite bits_zero_ext bits_sign_ext: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128500	128545	4258	4258	proof search/rewrite rule	#[global] Hint Resolve modulus_pos: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128546	128588	4259	4259	proof search/rewrite rule	#[global] Hint Resolve eqm_refl: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128589	128632	4260	4260	proof search/rewrite rule	#[global] Hint Resolve eqm_refl2: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128633	128674	4261	4261	proof search/rewrite rule	#[global] Hint Resolve eqm_sym: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128675	128718	4262	4262	proof search/rewrite rule	#[global] Hint Resolve eqm_trans: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128719	128765	4263	4263	proof search/rewrite rule	#[global] Hint Resolve eqm_small_eq: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128766	128807	4264	4264	proof search/rewrite rule	#[global] Hint Resolve eqm_add: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128808	128849	4265	4265	proof search/rewrite rule	#[global] Hint Resolve eqm_neg: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128850	128891	4266	4266	proof search/rewrite rule	#[global] Hint Resolve eqm_sub: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128892	128934	4267	4267	proof search/rewrite rule	#[global] Hint Resolve eqm_mult: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128935	128986	4268	4268	proof search/rewrite rule	#[global] Hint Resolve eqm_unsigned_repr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		128987	129040	4269	4269	proof search/rewrite rule	#[global] Hint Resolve eqm_unsigned_repr_l: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129041	129094	4270	4270	proof search/rewrite rule	#[global] Hint Resolve eqm_unsigned_repr_r: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129095	129143	4271	4271	proof search/rewrite rule	#[global] Hint Resolve unsigned_range: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129144	129194	4272	4272	proof search/rewrite rule	#[global] Hint Resolve unsigned_range_2: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129195	129242	4273	4273	proof search/rewrite rule	#[global] Hint Resolve repr_unsigned: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129243	129288	4274	4274	proof search/rewrite rule	#[global] Hint Resolve repr_signed: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129289	129336	4275	4275	proof search/rewrite rule	#[global] Hint Resolve unsigned_repr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129337	129393	4276	4276	proof search/rewrite rule	#[global] Hint Rewrite @bits_zero @bits_mone : bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129394	129466	4277	4277	proof search/rewrite rule	#[global] Hint Rewrite @bits_and @bits_or @bits_xor @bits_not: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129467	129531	4278	4278	proof search/rewrite rule	#[global] Hint Rewrite @bits_shl @bits_shru @bits_shr: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129532	129585	4279	4279	proof search/rewrite rule	#[global] Hint Rewrite @bits_rol @bits_ror: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129586	129649	4280	4280	proof search/rewrite rule	#[global] Hint Rewrite @bits_zero_ext @bits_sign_ext: bit_ints.
+src/rocq/Numeric/Integers.v	Vellvm.Numeric.Integers		129651	129749	4282	4283	proof tactic	Ltac bit_solve
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		1507	1528	27	27	notation scope	Import ListNotations.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		1530	1550	29	29	notation scope	Close Scope R_scope.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		1551	1570	30	30	notation scope	Open Scope Z_scope.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		9300	9344	220	220	term abbreviation	Local Notation __ := (eq_refl Datatypes.Lt).
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		9346	9419	222	222	proof search/rewrite rule	Local Hint Extern 1 (Prec_gt_0 _) => exact (eq_refl Datatypes.Lt) : core.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		9420	9487	223	223	proof search/rewrite rule	Local Hint Extern 1 (_ < _) => exact (eq_refl Datatypes.Lt) : core.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats.Float		17206	17295	408	409	proof tactic	Ltac compute_this val
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats.Float		17297	17759	411	419	proof tactic	Ltac smart_omega
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		61322	61643	1526	1531	proof reduction control	Global Opaque Float.zero Float.eq_dec Float.neg Float.abs Float.of_single Float.to_single Float.of_int Float.of_intu Float.of_long Float.of_longu Float.to_int Float.to_intu Float.to_long Float.to_longu Float.add Float.sub Float.mul Float.div Float.cmp Float.ordered Float.to_bits Float.of_bits Float.from_words.
+src/rocq/Numeric/Floats.v	Vellvm.Numeric.Floats		61645	61957	1533	1538	proof reduction control	Global Opaque Float32.zero Float32.eq_dec Float32.neg Float32.abs Float32.of_int Float32.of_intu Float32.of_long Float32.of_longu Float32.to_int Float32.to_intu Float32.to_long Float32.to_longu Float32.add Float32.sub Float32.mul Float32.div Float32.cmp Float32.ordered Float32.to_bits Float32.of_bits.
+src/rocq/Utils/ParserHelper.v	Vellvm.Utils.ParserHelper		416	429	12	12	notation scope	Open Scope Z.
+src/rocq/Utils/ParserHelper.v	Vellvm.Utils.ParserHelper	Correctness	3711	4100	113	125	proof tactic	Ltac break_match
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		117	244	9	11	proof tactic	Ltac force_rewrite H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		246	414	13	15	tactic syntax	Tactic Notation "force_rewrite:" constr(H) "in" hyp(H')
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		416	552	17	20	proof tactic	Ltac flatten_goal
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		554	693	22	25	proof tactic	Ltac flatten_hyp h
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		695	926	27	31	proof tactic	Ltac flatten_all
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		928	974	33	33	proof tactic	Ltac inv H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		976	1026	35	35	tactic syntax	Global Tactic Notation "intros !"
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		1072	1466	38	49	proof tactic	Ltac invn f
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		1517	1961	52	63	proof tactic	Ltac destructn f
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		2009	2421	66	77	proof tactic	Ltac appn f
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		2470	2892	80	91	proof tactic	Ltac eappn f
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		3109	3320	97	104	proof tactic	Ltac break_match_hyp
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		3322	3544	106	114	proof tactic	Ltac break_match_hyp_inv
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		3752	3959	119	126	proof tactic	Ltac break_match_goal
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4042	4098	130	130	proof tactic	Ltac break_match
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4100	4216	132	135	proof tactic	Ltac break_hyp_fast
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4424	4544	140	144	proof tactic	Ltac break_goal_fast
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4546	4599	146	146	proof tactic	Ltac break_fast
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4661	4845	149	153	proof tactic	Ltac break_let
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		4847	5042	155	161	proof tactic	Ltac inv_option
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5044	5228	163	169	proof tactic	Ltac inv_sum
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5230	5304	171	174	proof tactic	Ltac break_sum
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5358	5518	180	186	proof tactic	Ltac bind_ret_r1_eutt
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5520	5688	188	194	proof tactic	Ltac bind_ret_r1_eq_itree
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5690	5758	196	196	proof tactic	Ltac bind_ret_r1
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5787	5947	198	204	proof tactic	Ltac bind_ret_r2_eutt
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		5949	6117	206	212	proof tactic	Ltac bind_ret_r2_eq_itree
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6119	6187	214	214	proof tactic	Ltac bind_ret_r2
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6189	6320	216	220	proof tactic	Ltac forward H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6436	6551	223	227	proof tactic	Ltac ret_bind_l_left v
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6553	6762	229	236	proof tactic	Ltac simpl_match_hyp h
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6763	6826	237	237	tactic syntax	Tactic Notation "simpl_match" "in" hyp(h)
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6828	6906	239	242	proof tactic	Ltac destruct_unit
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		6998	7161	246	251	proof tactic	Ltac break_inner_match' t
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7261	7389	255	259	proof tactic	Ltac break_inner_match_goal
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7491	7624	263	267	proof tactic	Ltac break_inner_match_hyp
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7735	7809	271	271	proof tactic	Ltac break_inner_match
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7811	7915	273	276	proof tactic	Ltac forwardr H H'
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7916	7979	277	277	tactic syntax	Tactic Notation "forwardr" ident(H) ident(H')
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		7981	8107	279	284	proof tactic	Ltac match_rewrite
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8109	8358	286	293	proof tactic	Ltac inv_eqs
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8360	8443	295	298	proof tactic	Ltac splits
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8445	8493	300	301	proof tactic	Ltac abs_by H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8609	8642	305	305	proof tactic	Ltac protect H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8643	8852	306	312	proof tactic	Ltac hide_string_hyp' H
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		8854	9316	314	328	proof tactic	Ltac hide_strings'
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		9318	9610	330	339	proof tactic	Ltac forget_strings
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		9612	9707	341	344	proof tactic	Ltac break_and
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		9827	10067	348	357	proof tactic	Ltac hide_cont
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		10068	10217	358	364	proof tactic	Ltac show_cont
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		10218	10294	365	365	pretty-printer	Notation "'hidden' K" := (hidden_cont (K = _)) (only printing, at level 10).
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		10295	10441	366	372	proof tactic	Ltac subst_cont
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		11009	11118	390	394	proof tactic	Ltac inj_pair2_existT
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		11120	11167	396	397	proof tactic	Ltac subst_existT
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		11169	11255	399	402	proof tactic	Ltac abs_eq
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		11257	11300	404	404	proof tactic	Ltac do_it
+src/rocq/Utils/Tactics.v	Vellvm.Utils.Tactics		11302	11412	406	409	proof tactic	Ltac rw_match
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil		209	230	12	12	notation scope	Import ListNotations.
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil		231	252	13	13	notation scope	Import MonadNotation.
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil		253	270	14	14	notation scope	Open Scope monad.
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil	Standard	12670	12812	425	427	proof tactic	Local Ltac take_step
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil	DISJOINT	28524	28567	879	879	term notation	Infix "⊍" := list_disjoint (at level 60).
+src/rocq/Utils/ListUtil.v	Vellvm.Utils.ListUtil		31964	32017	991	991	term notation	#[global] Infix "⊍" := list_disjoint (at level 60).
+src/rocq/Utils/ZUtil.v	Vellvm.Utils.ZUtil		78	99	4	4	notation scope	Import ListNotations.
+src/rocq/Utils/ZUtil.v	Vellvm.Utils.ZUtil		101	120	6	6	notation scope	Open Scope Z_scope.
+src/rocq/Utils/StringUtil.v	Vellvm.Utils.StringUtil		112	133	3	3	notation scope	Import ListNotations.
+src/rocq/Utils/StringUtil.v	Vellvm.Utils.StringUtil		134	152	4	4	notation scope	Open Scope string.
+src/rocq/Utils/StringUtil.v	Vellvm.Utils.StringUtil		349	380	10	10	proof reduction control	Arguments append : simpl never.
+src/rocq/Utils/RelationsUtil.v	Vellvm.Utils.RelationsUtil		125	181	8	8	term notation	Infix"×" := prod_rel (at level 90, left associativity).
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		368	387	24	24	notation scope	Import EqvNotation.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		388	409	25	25	notation scope	Import ListNotations.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		410	431	26	26	notation scope	Import MonadNotation.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		432	455	27	27	notation scope	Import FunctorNotation.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		456	483	28	28	notation scope	Import ApplicativeNotation.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		485	513	30	30	notation scope	#[local] Open Scope Z_scope.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		842	890	37	37	elaboration coercion	#[global] Coercion is_true : bool >-> Sortclass.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		47294	47318	1547	1547	proof reduction control	Opaque IntMaps.IM.Equal.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		47323	47352	1548	1548	proof reduction control	Opaque IntMaps.IP.filter_dom.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		47674	47703	1562	1562	proof reduction control	Transparent IntMaps.IM.Equal.
+src/rocq/Utils/IntMaps.v	Vellvm.Utils.IntMaps		47710	47744	1563	1563	proof reduction control	Transparent IntMaps.IP.filter_dom.
+src/rocq/Utils/Assoc.v	Vellvm.Utils.Assoc		107	128	4	4	notation scope	Import ListNotations.
+src/rocq/Utils/ITreeUtil.v	Vellvm.Utils.ITreeUtil		239	297	9	9	term abbreviation	Notation trigger_cast e := (trigger_cast' (subevent _ e)).
+src/rocq/Utils.v	Vellvm.Utils		807	828	35	35	notation scope	Export ListNotations.
+src/rocq/Utils.v	Vellvm.Utils		829	852	36	36	notation scope	Export FunctorNotation.
+src/rocq/Utils.v	Vellvm.Utils		853	874	37	37	notation scope	Export MonadNotation.
+src/rocq/Utils.v	Vellvm.Utils		875	901	38	38	notation scope	#[global] Open Scope list.
+src/rocq/Utils.v	Vellvm.Utils		902	935	39	39	notation scope	#[global] Open Scope monad_scope.
+src/rocq/Syntax/LLVMAst.v	Vellvm.Syntax.LLVMAst		117	138	7	7	notation scope	Import ListNotations.
+src/rocq/Syntax/LLVMAst.v	Vellvm.Syntax.LLVMAst		139	163	8	8	notation scope	Open Scope string_scope.
+src/rocq/Syntax/LLVMAst.v	Vellvm.Syntax.LLVMAst		164	186	9	9	notation scope	Open Scope list_scope.
+src/rocq/Syntax/AstLib.v	Vellvm.Syntax.AstLib		306	325	14	14	notation scope	Import EqvNotation.
+src/rocq/Syntax/AstLib.v	Vellvm.Syntax.AstLib.RawIDOrd		1966	2113	70	76	proof search/rewrite rule	#[local] Hint Resolve Zcompare_antisym Z.compare_eq String_as_OT.cmp_antisym String_as_OT.cmp_eq String_as_OT.cmp_lt : CMP.
+src/rocq/Syntax/AstLib.v	Vellvm.Syntax.AstLib		4252	4291	162	162	proof search/rewrite rule	#[export] Hint Unfold eqv_raw_id: core.
+src/rocq/Syntax/AstLib.v	Vellvm.Syntax.AstLib		27667	27764	666	667	proof tactic	Ltac unfold_eqv
+src/rocq/Syntax/RawIdMaps.v	Vellvm.Syntax.RawIdMaps		1632	1679	48	48	elaboration coercion	#[local] Coercion is_true : bool >-> Sortclass.
+src/rocq/Syntax/CFG.v	Vellvm.Syntax.CFG		231	250	14	14	notation scope	Import EqvNotation.
+src/rocq/Syntax/CFG.v	Vellvm.Syntax.CFG	TLE_To_Modul	16750	16790	448	448	term notation	Infix "@@" := (modul_app) (at level 60).
+src/rocq/Syntax/CFG.v	Vellvm.Syntax.CFG.CFGNotations		19805	19845	539	539	term notation	Infix "@@" := (modul_app) (at level 60).
+src/rocq/Syntax/ModuleRefs.v	Vellvm.Syntax.ModuleRefs		90	111	7	7	notation scope	Import ListNotations.
+src/rocq/Syntax/DynamicTypes.v	Vellvm.Syntax.DynamicTypes		197	212	12	12	notation scope	Open Scope nat.
+src/rocq/Syntax/DynamicTypes.v	Vellvm.Syntax.DynamicTypes		1258	1299	51	51	elaboration coercion	Coercion DTYPE_Base : dtyp_base >-> dtyp.
+src/rocq/Syntax/DynamicTypes.v	Vellvm.Syntax.DynamicTypes		1571	1878	60	66	proof tactic	Ltac dec_dtyp
+src/rocq/Syntax/Traversal.v	Vellvm.Syntax.Traversal		32486	32505	917	917	notation scope	Import EqvNotation.
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		159	179	10	10	notation scope	Import CFGNotations.
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		1425	1470	35	35	proof search/rewrite rule	#[export] Hint Constructors typ_order : core.
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		2060	2199	61	65	proof tactic	Ltac destruct_prod
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		2201	2436	67	71	proof tactic	Ltac destruct_eq_dec
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		2877	2923	90	90	proof search/rewrite rule	#[export] Hint Resolve wf_lt_typ_order : core.
+src/rocq/Syntax/TypToDtyp.v	Vellvm.Syntax.TypToDtyp		2924	2967	91	91	proof search/rewrite rule	#[export] Hint Constructors lex_ord : core.
+src/rocq/Syntax/Scope.v	Vellvm.Syntax.Scope.SetNotations		5702	5778	156	156	term notation	Infix "+++" := (set_union raw_id_eq_dec) (right associativity, at level 60).
+src/rocq/Syntax/Scope.v	Vellvm.Syntax.Scope.SetNotations		5781	5855	157	157	term notation	Infix ":::" := (set_add raw_id_eq_dec) (right associativity, at level 60).
+src/rocq/Syntax/Scope.v	Vellvm.Syntax.Scope.SetNotations		5858	5936	158	158	term notation	Infix "∖" := (set_diff raw_id_eq_dec) (right associativity, at level 60).
+src/rocq/Syntax/Scope.v	Vellvm.Syntax.Scope.SetNotations		5939	5971	159	159	term notation	Notation "∅" := (empty_set _).
+src/rocq/Syntax/Scope.v	Vellvm.Syntax.Scope		6183	6203	170	170	notation scope	Import SetNotations.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax		105	118	7	7	notation scope	Open Scope Z.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax		796	841	19	19	notation diagnostic setting	Set Warnings "-notation-incompatible-prefix".
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6073	6102	124	124	syntax category	Declare Custom Entry vir_typ.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6105	6134	125	125	syntax category	Declare Custom Entry vir_exp.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6137	6168	126	126	syntax category	Declare Custom Entry vir_instr.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6171	6201	127	127	syntax category	Declare Custom Entry vir_term.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6204	6234	128	128	syntax category	Declare Custom Entry vir_code.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6237	6266	129	129	syntax category	Declare Custom Entry vir_phi.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6269	6299	130	130	syntax category	Declare Custom Entry vir_phis.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6302	6336	131	131	syntax category	Declare Custom Entry vir_idx_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6376	6410	132	132	syntax category	Declare Custom Entry vir_phi_args.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6458	6492	133	133	syntax category	Declare Custom Entry vir_arm_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6548	6584	134	134	syntax category	Declare Custom Entry vir_label_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6628	6658	135	135	syntax category	Declare Custom Entry vir_anns.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6707	6736	136	136	syntax category	Declare Custom Entry vir_fmf.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6789	6823	137	137	syntax category	Declare Custom Entry vir_typ_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6879	6913	138	138	syntax category	Declare Custom Entry vir_def_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		6960	6995	139	139	syntax category	Declare Custom Entry vir_decl_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		7043	7080	140	140	syntax category	Declare Custom Entry vir_global_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		7116	7150	141	141	syntax category	Declare Custom Entry vir_tle_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		7187	7223	142	142	syntax category	Declare Custom Entry vir_block_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		7265	7300	143	143	syntax category	Declare Custom Entry vir_iidx_list.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8377	8460	166	166	pretty-printer	Notation "'%t' t" := t (t custom vir_typ at level 99, only printing, at level 0).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8463	8546	167	167	pretty-printer	Notation "'%e' e" := e (e custom vir_exp at level 99, only printing, at level 0).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8549	8632	168	168	pretty-printer	Notation "'%i' i" := i (i custom vir_instr at level 99, only printing, at level 0).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8635	8718	169	169	pretty-printer	Notation "'%T' t" := t (t custom vir_term at level 99, only printing, at level 0).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8721	8804	170	170	pretty-printer	Notation "'%p' p" := p (p custom vir_phi at level 99, only printing, at level 0).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8860	8894	173	173	elaboration coercion	Coercion Name : string >-> raw_id.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8897	8932	174	174	elaboration coercion	Coercion Anon : int_ast >-> raw_id.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		8980	9082	177	178	pretty-printer	Notation "( t )" := t (in custom vir_typ at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9085	9167	179	180	pretty-printer	Notation "{ t }" := t (in custom vir_typ at level 0, t constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9170	9247	181	182	pretty-printer	Notation "x" := x (in custom vir_typ at level 0, x ident, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9251	9375	184	186	pretty-printer	Notation "'i' n" := (DTYPE_I n) (in custom vir_typ at level 5, n constr at level 0, only printing, format "'i' n").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9378	9501	187	189	pretty-printer	Notation "'i' n" := (TYPE_I n) (in custom vir_typ at level 5, n constr at level 0, only printing, format "'i' n").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9848	9934	195	195	pretty-printer	Notation "'ptr'" := DTYPE_Pointer (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		9937	10023	196	196	pretty-printer	Notation "'ptr'" := (TYPE_Pointer None) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10026	10170	197	199	pretty-printer	Notation "t '*'" := (TYPE_Pointer (Some t)) (in custom vir_typ at level 5, t custom vir_typ at level 5, only printing, format "t '*'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10173	10254	200	200	pretty-printer	Notation "'void'" := DTYPE_Void (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10257	10338	201	201	pretty-printer	Notation "'void'" := TYPE_Void (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10526	10622	206	206	pretty-printer	Notation "'half'" := (TYPE_FP FP_half) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10625	10721	207	207	pretty-printer	Notation "'half'" := (DTYPE_FP FP_half) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10724	10820	208	208	pretty-printer	Notation "'bfloat'" := (TYPE_FP FP_bfloat) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10823	10919	209	209	pretty-printer	Notation "'bfloat'" := (DTYPE_FP FP_bfloat) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		10922	11018	210	210	pretty-printer	Notation "'float'" := (TYPE_FP FP_float) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11021	11117	211	211	pretty-printer	Notation "'float'" := (DTYPE_FP FP_float) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11120	11216	212	212	pretty-printer	Notation "'double'" := (TYPE_FP FP_double) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11219	11315	213	213	pretty-printer	Notation "'double'" := (DTYPE_FP FP_double) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11318	11414	214	214	pretty-printer	Notation "'fp128'" := (TYPE_FP FP_fp128) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11417	11513	215	215	pretty-printer	Notation "'fp128'" := (DTYPE_FP FP_fp128) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11516	11612	216	216	pretty-printer	Notation "'x86_fp80'" := (TYPE_FP FP_x86_fp80) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11615	11711	217	217	pretty-printer	Notation "'x86_fp80'" := (DTYPE_FP FP_x86_fp80) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11714	11810	218	218	pretty-printer	Notation "'ppc_fp128'" := (TYPE_FP FP_ppc_fp128) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11813	11909	219	219	pretty-printer	Notation "'ppc_fp128'" := (DTYPE_FP FP_ppc_fp128) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		11949	12034	222	222	pretty-printer	Notation "'iptr'" := TYPE_Iptr (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12037	12122	223	223	pretty-printer	Notation "'label'" := TYPE_Label (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12125	12210	224	224	pretty-printer	Notation "'label'" := DTYPE_Label (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12213	12298	225	225	pretty-printer	Notation "'token'" := TYPE_Token (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12301	12386	226	226	pretty-printer	Notation "'metadata'" := TYPE_Metadata (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12389	12474	227	227	pretty-printer	Notation "'opaque'" := TYPE_Opaque (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12569	12736	231	234	pretty-printer	Notation "'[' sz 'x' t ']'" := (TYPE_Array false sz t) (in custom vir_typ at level 5, sz constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12739	12907	235	238	pretty-printer	Notation "'[' sz 'x' t ']'" := (DTYPE_Array false sz t) (in custom vir_typ at level 5, sz constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		12910	13076	239	242	pretty-printer	Notation "'<' sz 'x' t '>'" := (TYPE_Array true sz t) (in custom vir_typ at level 5, sz constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13079	13246	243	246	pretty-printer	Notation "'<' sz 'x' t '>'" := (DTYPE_Array true sz t) (in custom vir_typ at level 5, sz constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13449	13541	251	252	pretty-printer	Notation "'{|' '|}'" := (TYPE_Struct nil) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13544	13637	253	254	pretty-printer	Notation "'{|' '|}'" := (DTYPE_Struct nil) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13640	13798	255	258	pretty-printer	Notation "'{|' fields '|}'" := (TYPE_Struct false fields) (in custom vir_typ at level 5, fields custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13801	13960	259	262	pretty-printer	Notation "'{|' fields '|}'" := (DTYPE_Struct false fields) (in custom vir_typ at level 5, fields custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		13963	14062	263	264	pretty-printer	Notation "'<{' '}>'" := (TYPE_Packed_struct nil) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		14065	14163	265	266	pretty-printer	Notation "'<{' '}>'" := (DTYPE_Struct true nil) (in custom vir_typ at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		14166	14325	267	270	pretty-printer	Notation "'<{' fields '}>'" := (TYPE_Packed_struct fields) (in custom vir_typ at level 5, fields custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		14328	14486	271	274	pretty-printer	Notation "'<{' fields '}>'" := (DTYPE_Struct true fields) (in custom vir_typ at level 5, fields custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		14688	14837	279	282	pretty-printer	Notation "ret '(' ')'" := (TYPE_Function ret nil false) (in custom vir_typ at level 30, ret custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		14840	15038	283	287	pretty-printer	Notation "ret '(' args ')'" := (TYPE_Function ret args false) (in custom vir_typ at level 30, ret custom vir_typ at level 99, args custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		15041	15195	288	291	pretty-printer	Notation "ret '(' '...' ')'" := (TYPE_Function ret nil true) (in custom vir_typ at level 30, ret custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		15198	15405	292	296	pretty-printer	Notation "ret '(' args ',' '...' ')'" := (TYPE_Function ret args true) (in custom vir_typ at level 30, ret custom vir_typ at level 99, args custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		15444	15587	299	301	pretty-printer	Notation "'%' x" := (TYPE_Identified (ID_Local x)) (in custom vir_typ at level 5, x constr at level 0, only printing, format "'%' x").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		15590	15734	302	304	pretty-printer	Notation "'@' x" := (TYPE_Identified (ID_Global x)) (in custom vir_typ at level 5, x constr at level 0, only printing, format "'@' x").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		15897	16009	309	310	pretty-printer	Notation "( l )" := l (in custom vir_typ_list at level 0, l custom vir_typ_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		16012	16099	311	312	pretty-printer	Notation "{ l }" := l (in custom vir_typ_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		16102	16324	313	319	pretty-printer	Notation "t ',' .. ',' u" := (cons t .. (cons u nil) ..) (in custom vir_typ_list at level 99, t custom vir_typ at level 99, u custom vir_typ at level 99, only printing, format "t ',' .. ',' u").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		16363	16465	322	323	pretty-printer	Notation "( e )" := e (in custom vir_exp at level 0, e custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		16468	16550	324	325	pretty-printer	Notation "{ e }" := e (in custom vir_exp at level 0, e constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		16924	17061	332	334	pretty-printer	Notation "'%' x" := (EXP_Ident (ID_Local x)) (in custom vir_exp at level 0, x constr at level 0, only printing, format "'%' x").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		17064	17202	335	337	pretty-printer	Notation "'@' x" := (EXP_Ident (ID_Global x)) (in custom vir_exp at level 0, x constr at level 0, only printing, format "'@' x").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		17884	18002	350	351	pretty-printer	Notation "n" := (EXP_Integer (Z.to_num_int n)) (in custom vir_exp at level 0, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18005	18108	352	353	pretty-printer	Notation "n" := (EXP_Integer n) (in custom vir_exp at level 0, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18111	18210	354	354	pretty-printer	Notation "'null'" := EXP_Null (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18213	18312	355	355	pretty-printer	Notation "'zeroinitializer'" := EXP_Zero_initializer (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18315	18414	356	356	pretty-printer	Notation "'undef'" := EXP_Undef (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18417	18516	357	357	pretty-printer	Notation "'poison'" := EXP_Poison (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18723	18829	361	362	pretty-printer	Notation "'fp' f" := (EXP_Float f) (in custom vir_exp at level 0, f constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		18899	19010	364	365	pretty-printer	Notation "'meta' m" := (EXP_Metadata m) (in custom vir_exp at level 0, m constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		19077	19250	367	371	pretty-printer	Notation "'splat' τ v" := (EXP_Splat (τ, v)) (in custom vir_exp at level 5, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		19330	19489	373	375	pretty-printer	Notation "'blockaddress' ( f , b )" := (EXP_BlockAddress f b) (in custom vir_exp at level 0, f constr at level 0, b constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		19772	19857	380	380	pretty-printer	Notation "'true'" := (EXP_Bool true) (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		19860	19945	381	381	pretty-printer	Notation "'false'" := (EXP_Bool false) (in custom vir_exp at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		20154	20302	385	388	pretty-printer	Notation "'c' '[' elts ']'" := (EXP_Cstring elts) (in custom vir_exp at level 0, elts custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		20774	20920	399	401	pretty-printer	Notation "'{|' fields '|}'" := (EXP_Struct fields) (in custom vir_exp at level 0, fields custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		20923	21076	402	404	pretty-printer	Notation "'<{' fields '}>'" := (EXP_Packed_struct fields) (in custom vir_exp at level 0, fields custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		21079	21218	405	407	pretty-printer	Notation "'[' elts ']'" := (EXP_Array _ elts) (in custom vir_exp at level 0, elts custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		21221	21361	408	410	pretty-printer	Notation "'<' elts '>'" := (EXP_Vector _ elts) (in custom vir_exp at level 0, elts custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		21653	21768	418	419	pretty-printer	Notation "'add' e ',' f" := (OP_IBinop (Add false false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		21771	21892	420	421	pretty-printer	Notation "'add' 'nuw' e ',' f" := (OP_IBinop (Add true false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		21895	22016	422	423	pretty-printer	Notation "'add' 'nsw' e ',' f" := (OP_IBinop (Add false true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22019	22146	424	425	pretty-printer	Notation "'add' 'nuw' 'nsw' e ',' f" := (OP_IBinop (Add true true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22150	22265	427	428	pretty-printer	Notation "'sub' e ',' f" := (OP_IBinop (Sub false false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22268	22389	429	430	pretty-printer	Notation "'sub' 'nuw' e ',' f" := (OP_IBinop (Sub true false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22392	22513	431	432	pretty-printer	Notation "'sub' 'nsw' e ',' f" := (OP_IBinop (Sub false true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22516	22643	433	434	pretty-printer	Notation "'sub' 'nuw' 'nsw' e ',' f" := (OP_IBinop (Sub true true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22647	22762	436	437	pretty-printer	Notation "'mul' e ',' f" := (OP_IBinop (Mul false false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22765	22886	438	439	pretty-printer	Notation "'mul' 'nuw' e ',' f" := (OP_IBinop (Mul true false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		22889	23010	440	441	pretty-printer	Notation "'mul' 'nsw' e ',' f" := (OP_IBinop (Mul false true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23013	23140	442	443	pretty-printer	Notation "'mul' 'nuw' 'nsw' e ',' f" := (OP_IBinop (Mul true true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23144	23259	445	446	pretty-printer	Notation "'shl' e ',' f" := (OP_IBinop (Shl false false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23262	23383	447	448	pretty-printer	Notation "'shl' 'nuw' e ',' f" := (OP_IBinop (Shl true false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23386	23507	449	450	pretty-printer	Notation "'shl' 'nsw' e ',' f" := (OP_IBinop (Shl false true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23510	23637	451	452	pretty-printer	Notation "'shl' 'nuw' 'nsw' e ',' f" := (OP_IBinop (Shl true true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23641	23758	454	455	pretty-printer	Notation "'udiv' e ',' f" := (OP_IBinop (UDiv false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23761	23886	456	457	pretty-printer	Notation "'udiv' 'exact' e ',' f" := (OP_IBinop (UDiv true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		23890	24007	459	460	pretty-printer	Notation "'sdiv' e ',' f" := (OP_IBinop (SDiv false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24010	24135	461	462	pretty-printer	Notation "'sdiv' 'exact' e ',' f" := (OP_IBinop (SDiv true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24139	24256	464	465	pretty-printer	Notation "'lshr' e ',' f" := (OP_IBinop (LShr false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24259	24384	466	467	pretty-printer	Notation "'lshr' 'exact' e ',' f" := (OP_IBinop (LShr true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24388	24505	469	470	pretty-printer	Notation "'ashr' e ',' f" := (OP_IBinop (AShr false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24508	24633	471	472	pretty-printer	Notation "'ashr' 'exact' e ',' f" := (OP_IBinop (AShr true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24637	24736	474	474	pretty-printer	Notation "'urem' e ',' f" := (OP_IBinop URem _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24739	24838	475	475	pretty-printer	Notation "'srem' e ',' f" := (OP_IBinop SRem _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		24841	24940	476	476	pretty-printer	Notation "'and' e ',' f" := (OP_IBinop And _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25005	25119	478	478	pretty-printer	Notation "'or' e ',' f" := (OP_IBinop (Or false) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25122	25236	479	479	pretty-printer	Notation "'or' 'disjoint' e ',' f" := (OP_IBinop (Or true) _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25239	25338	480	480	pretty-printer	Notation "'xor' e ',' f" := (OP_IBinop Xor _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25652	25756	487	487	pretty-printer	Notation "'icmp' 'eq'  e ',' f" := (OP_ICmp _ Eq _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25759	25863	488	488	pretty-printer	Notation "'icmp' 'ne'  e ',' f" := (OP_ICmp _ Ne _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25866	25970	489	489	pretty-printer	Notation "'icmp' 'ugt' e ',' f" := (OP_ICmp _ Ugt _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		25973	26077	490	490	pretty-printer	Notation "'icmp' 'uge' e ',' f" := (OP_ICmp _ Uge _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26080	26184	491	491	pretty-printer	Notation "'icmp' 'ult' e ',' f" := (OP_ICmp _ Ult _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26187	26291	492	492	pretty-printer	Notation "'icmp' 'ule' e ',' f" := (OP_ICmp _ Ule _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26294	26398	493	493	pretty-printer	Notation "'icmp' 'sgt' e ',' f" := (OP_ICmp _ Sgt _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26401	26505	494	494	pretty-printer	Notation "'icmp' 'sge' e ',' f" := (OP_ICmp _ Sge _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26508	26612	495	495	pretty-printer	Notation "'icmp' 'slt' e ',' f" := (OP_ICmp _ Slt _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26615	26719	496	496	pretty-printer	Notation "'icmp' 'sle' e ',' f" := (OP_ICmp _ Sle _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		26998	27099	502	502	pretty-printer	Notation "'fadd' e ',' f" := (OP_FBinop FAdd _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27102	27203	503	503	pretty-printer	Notation "'fsub' e ',' f" := (OP_FBinop FSub _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27206	27307	504	504	pretty-printer	Notation "'fmul' e ',' f" := (OP_FBinop FMul _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27310	27411	505	505	pretty-printer	Notation "'fdiv' e ',' f" := (OP_FBinop FDiv _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27414	27515	506	506	pretty-printer	Notation "'frem' e ',' f" := (OP_FBinop FRem _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27645	27753	510	510	pretty-printer	Notation "'fcmp' 'false'" := (OP_FCmp FFalse _ _ _ _) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27756	27864	511	511	pretty-printer	Notation "'fcmp' 'true'" := (OP_FCmp FTrue _ _ _ _) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27867	27975	512	512	pretty-printer	Notation "'fcmp' 'oeq' e ',' f" := (OP_FCmp FOeq _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		27978	28086	513	513	pretty-printer	Notation "'fcmp' 'ogt' e ',' f" := (OP_FCmp FOgt _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28089	28197	514	514	pretty-printer	Notation "'fcmp' 'oge' e ',' f" := (OP_FCmp FOge _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28200	28308	515	515	pretty-printer	Notation "'fcmp' 'olt' e ',' f" := (OP_FCmp FOlt _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28311	28419	516	516	pretty-printer	Notation "'fcmp' 'ole' e ',' f" := (OP_FCmp FOle _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28422	28530	517	517	pretty-printer	Notation "'fcmp' 'one' e ',' f" := (OP_FCmp FOne _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28533	28641	518	518	pretty-printer	Notation "'fcmp' 'ord' e ',' f" := (OP_FCmp FOrd _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28644	28752	519	519	pretty-printer	Notation "'fcmp' 'uno' e ',' f" := (OP_FCmp FUno _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28755	28863	520	520	pretty-printer	Notation "'fcmp' 'ueq' e ',' f" := (OP_FCmp FUeq _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28866	28974	521	521	pretty-printer	Notation "'fcmp' 'ugt' e ',' f" := (OP_FCmp FUgt _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		28977	29085	522	522	pretty-printer	Notation "'fcmp' 'uge' e ',' f" := (OP_FCmp FUge _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		29088	29196	523	523	pretty-printer	Notation "'fcmp' 'ult' e ',' f" := (OP_FCmp FUlt _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		29199	29307	524	524	pretty-printer	Notation "'fcmp' 'ule' e ',' f" := (OP_FCmp FUle _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		29310	29418	525	525	pretty-printer	Notation "'fcmp' 'une' e ',' f" := (OP_FCmp FUne _ _ e f) (in custom vir_exp at level 20, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		29776	30044	533	537	pretty-printer	Notation "'trunc' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Trunc false false)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		30047	30320	538	542	pretty-printer	Notation "'trunc' 'nuw' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Trunc true false)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		30323	30596	543	547	pretty-printer	Notation "'trunc' 'nsw' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Trunc false true)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		30599	30877	548	552	pretty-printer	Notation "'trunc' 'nuw' 'nsw' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Trunc true true)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		30881	31141	554	558	pretty-printer	Notation "'zext' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Zext false)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		31144	31410	559	563	pretty-printer	Notation "'zext' 'nneg' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Zext true)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		31414	31666	565	569	pretty-printer	Notation "'sext' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure Sext) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		32038	32301	577	581	pretty-printer	Notation "'fptrunc' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Fptrunc [])) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		32304	32617	582	587	pretty-printer	Notation "'fptrunc' '[' fmf ']' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Fptrunc fmf)) τfrom v τto) (in custom vir_exp at level 20, fmf custom vir_fmf at level 99, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		32620	32879	588	592	pretty-printer	Notation "'fpext' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Fpext [])) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		32882	33191	593	598	pretty-printer	Notation "'fpext' '[' fmf ']' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Fpext fmf)) τfrom v τto) (in custom vir_exp at level 20, fmf custom vir_fmf at level 99, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		33195	33459	600	604	pretty-printer	Notation "'uitofp' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Uitofp false)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		33462	33732	605	609	pretty-printer	Notation "'uitofp' 'nneg' τfrom v 'to' τto" := (OP_Conversion (CONV_Pure (Uitofp true)) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		33736	33991	611	613	pretty-printer	Notation "'sitofp'    τfrom v 'to' τto" := (OP_Conversion (CONV_Pure Sitofp) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		33994	34249	614	616	pretty-printer	Notation "'fptoui'    τfrom v 'to' τto" := (OP_Conversion (CONV_Pure Fptoui) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		34252	34507	617	619	pretty-printer	Notation "'fptosi'    τfrom v 'to' τto" := (OP_Conversion (CONV_Pure Fptosi) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		34510	34767	620	622	pretty-printer	Notation "'inttoptr'  τfrom v 'to' τto" := (OP_Conversion (CONV_Impure Inttoptr) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		34770	35027	623	625	pretty-printer	Notation "'ptrtoint'  τfrom v 'to' τto" := (OP_Conversion (CONV_Impure Ptrtoint) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		35030	35289	626	628	pretty-printer	Notation "'ptrtoaddr'  τfrom v 'to' τto" := (OP_Conversion (CONV_Impure Ptrtoaddr) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		35292	35540	629	631	pretty-printer	Notation "'bitcast'   τfrom v 'to' τto" := (OP_Conversion CONV_Bitcast τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		35543	35804	632	634	pretty-printer	Notation "'addrspacecast' τfrom v 'to' τto" := (OP_Conversion (CONV_Impure Addrspacecast) τfrom v τto) (in custom vir_exp at level 20, τfrom custom vir_typ at level 99, v custom vir_exp at level 99, τto custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		35872	36223	637	643	pretty-printer	Notation "'select' τc c ',' τa a ',' τb b" := (OP_Select _ (τc, c) (τa, a) (τb, b)) (in custom vir_exp at level 20, τc custom vir_typ at level 99, c custom vir_exp at level 99, τa custom vir_typ at level 99, a custom vir_exp at level 99, τb custom vir_typ at level 99, b custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		36391	36700	648	655	pretty-printer	Notation "'getelementptr' t ',' τp p ',' idxs" := (OP_GetElementPtr gep_no_flags t (τp, p) idxs) (in custom vir_exp at level 20, t custom vir_typ at level 99, τp custom vir_typ at level 99, p custom vir_exp at level 99, idxs custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		36740	37031	658	663	pretty-printer	Notation "'extractelement' τv vec ',' τi idx" := (OP_ExtractElement (τv, vec) (τi, idx)) (in custom vir_exp at level 20, τv custom vir_typ at level 99, vec custom vir_exp at level 99, τi custom vir_typ at level 99, idx custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		37034	37415	664	670	pretty-printer	Notation "'insertelement' τv vec ',' τe elt ',' τi idx" := (OP_InsertElement (τv, vec) (τe, elt) (τi, idx)) (in custom vir_exp at level 20, τv custom vir_typ at level 99, vec custom vir_exp at level 99, τe custom vir_typ at level 99, elt custom vir_exp at level 99, τi custom vir_typ at level 99, idx custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		37418	37788	671	677	pretty-printer	Notation "'shufflevector' τ1 v1 ',' τ2 v2 ',' τm m" := (OP_ShuffleVector (τ1, v1) (τ2, v2) (τm, m)) (in custom vir_exp at level 20, τ1 custom vir_typ at level 99, v1 custom vir_exp at level 99, τ2 custom vir_typ at level 99, v2 custom vir_exp at level 99, τm custom vir_typ at level 99, m custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		37919	38172	681	686	pretty-printer	Notation "'extractvalue' τv vec ',' idxs" := (OP_ExtractValue (τv, vec) idxs) (in custom vir_exp at level 20, τv custom vir_typ at level 99, vec custom vir_exp at level 99, idxs custom vir_iidx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		38175	38518	687	693	pretty-printer	Notation "'insertvalue' τv vec ',' τe elt ',' idxs" := (OP_InsertValue (τv, vec) (τe, elt) idxs) (in custom vir_exp at level 20, τv custom vir_typ at level 99, vec custom vir_exp at level 99, τe custom vir_typ at level 99, elt custom vir_exp at level 99, idxs custom vir_iidx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		38638	38807	697	700	pretty-printer	Notation "'fneg' τ v" := (OP_Fneg [] (τ, v)) (in custom vir_exp at level 20, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		38810	39029	701	705	pretty-printer	Notation "'fneg' '[' fmf ']' τ v" := (OP_Fneg fmf (τ, v)) (in custom vir_exp at level 20, fmf custom vir_fmf at level 99, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		39050	39220	708	711	pretty-printer	Notation "'freeze' τ v" := (OP_Freeze (τ, v)) (in custom vir_exp at level 20, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		39853	39959	725	726	pretty-printer	Notation "( i )" := i (in custom vir_instr at level 0, i custom vir_instr at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		39962	40046	727	728	pretty-printer	Notation "{ i }" := i (in custom vir_instr at level 0, i constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		40050	40214	730	734	pretty-printer	Notation "r '=' x" := (IId r, INSTR_Op x, _) (in custom vir_instr at level 30, r constr at level 0, x custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		40217	40361	735	736	pretty-printer	Notation "r '=' 'call' fn args" := (IId r, INSTR_Call fn args _ _, _) (in custom vir_instr at level 30, r constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		40364	40483	737	738	pretty-printer	Notation "'call' fn args" := (IVoid _, INSTR_Call fn args _ _, _) (in custom vir_instr at level 30, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		41006	41190	751	756	pretty-printer	Notation "r '=' 'alloca' t" := (IId r, INSTR_Alloca t [], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		41193	41443	757	763	pretty-printer	Notation "r '=' 'alloca' t ',' 'align' n" := (IId r, INSTR_Alloca t [ANN_align (Z.to_num_int n)], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		41446	41681	764	770	pretty-printer	Notation "r '=' 'alloca' t ',' 'align' n" := (IId r, INSTR_Alloca t [ANN_align n], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		41684	41918	771	777	pretty-printer	Notation "r '=' 'alloca' t ',' anns" := (IId r, INSTR_Alloca t anns, _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, anns custom vir_anns at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		42130	42407	782	789	pretty-printer	Notation "r '=' 'load' t ',' τp ptr" := (IId r, INSTR_Load t (τp, ptr) [], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		42410	42753	790	798	pretty-printer	Notation "r '=' 'load' t ',' τp ptr ',' 'align' n" := (IId r, INSTR_Load t (τp, ptr) [ANN_align (Z.to_num_int n)], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		42756	43084	799	807	pretty-printer	Notation "r '=' 'load' t ',' τp ptr ',' 'align' n" := (IId r, INSTR_Load t (τp, ptr) [ANN_align n], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		43087	43387	808	815	pretty-printer	Notation "r '=' 'load' 'volatile' t ',' τp ptr" := (IId r, INSTR_Load t (τp, ptr) [ANN_volatile], _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		43390	43717	816	824	pretty-printer	Notation "r '=' 'load' t ',' τp ptr ',' anns" := (IId r, INSTR_Load t (τp, ptr) anns, _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, anns custom vir_anns at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		43721	44014	826	831	pretty-printer	Notation "'store' τv val ',' τp ptr" := (IVoid _, INSTR_Store (τv, val) (τp, ptr) [], _) (in custom vir_instr at level 30, τv custom vir_typ at level 99, val custom vir_exp at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		44017	44376	832	838	pretty-printer	Notation "'store' τv val ',' τp ptr ',' 'align' n" := (IVoid _, INSTR_Store (τv, val) (τp, ptr) [ANN_align (Z.to_num_int n)], _) (in custom vir_instr at level 30, τv custom vir_typ at level 99, val custom vir_exp at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		44379	44723	839	845	pretty-printer	Notation "'store' τv val ',' τp ptr ',' 'align' n" := (IVoid _, INSTR_Store (τv, val) (τp, ptr) [ANN_align n], _) (in custom vir_instr at level 30, τv custom vir_typ at level 99, val custom vir_exp at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		44726	45042	846	851	pretty-printer	Notation "'store' 'volatile' τv val ',' τp ptr" := (IVoid _, INSTR_Store (τv, val) (τp, ptr) [ANN_volatile], _) (in custom vir_instr at level 30, τv custom vir_typ at level 99, val custom vir_exp at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		45045	45388	852	858	pretty-printer	Notation "'store' τv val ',' τp ptr ',' anns" := (IVoid _, INSTR_Store (τv, val) (τp, ptr) anns, _) (in custom vir_instr at level 30, τv custom vir_typ at level 99, val custom vir_exp at level 99, τp custom vir_typ at level 99, ptr custom vir_exp at level 99, anns custom vir_anns at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		45585	45720	863	865	pretty-printer	Notation "'#comment' msg" := (_, INSTR_Comment msg, _) (in custom vir_instr at level 30, msg constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		45723	45849	866	868	pretty-printer	Notation "'fence' o" := (_, INSTR_Fence _ o, _) (in custom vir_instr at level 30, o constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		45852	46022	869	872	pretty-printer	Notation "r '=' 'cmpxchg' c" := (IId r, INSTR_AtomicCmpXchg c, _) (in custom vir_instr at level 30, r constr at level 0, c constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		46025	46193	873	876	pretty-printer	Notation "r '=' 'atomicrmw' a" := (IId r, INSTR_AtomicRMW a, _) (in custom vir_instr at level 30, r constr at level 0, a constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		46196	46465	877	883	pretty-printer	Notation "r '=' 'va_arg' τv v ',' τ" := (IId r, INSTR_VAArg (τv, v) τ, _) (in custom vir_instr at level 30, r constr at level 0, τv custom vir_typ at level 99, v custom vir_exp at level 99, τ custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		46468	46661	884	889	pretty-printer	Notation "r '=' 'landingpad' t" := (IId r, INSTR_LandingPad t _ _, _) (in custom vir_instr at level 30, r constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		46935	47039	897	898	pretty-printer	Notation "( t )" := t (in custom vir_term at level 0, t custom vir_term at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47042	47125	899	900	pretty-printer	Notation "{ t }" := t (in custom vir_term at level 0, t constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47129	47302	902	905	pretty-printer	Notation "'ret' τ e" := (_, TERM_Ret (τ, e), _) (in custom vir_term at level 30, τ custom vir_typ at level 99, e custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47305	47406	906	907	pretty-printer	Notation "'ret' 'void'" := (_, TERM_Ret_void, _) (in custom vir_term at level 30, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47409	47668	908	914	pretty-printer	Notation "'br' τ c ',' 'label' e ',' 'label' f" := (_, TERM_Br (τ, c) e f, _) (in custom vir_term at level 30, τ custom vir_typ at level 99, c custom vir_exp at level 99, e constr at level 0, f constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47671	47803	915	918	pretty-printer	Notation "'br' 'label' e" := (_, TERM_Br_1 e, _) (in custom vir_term at level 30, e constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47806	47911	919	920	pretty-printer	Notation "'unreachable'" := (_, TERM_Unreachable, _) (in custom vir_term at level 30, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		47914	48093	921	924	pretty-printer	Notation "'resume' τ v" := (_, TERM_Resume (τ, v), _) (in custom vir_term at level 30, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		48096	48345	925	930	pretty-printer	Notation "'switch' τ v ',' 'label' d brs" := (_, TERM_Switch (τ, v) d brs, _) (in custom vir_term at level 30, τ custom vir_typ at level 99, v custom vir_exp at level 99, brs custom vir_arm_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		48348	48597	931	936	pretty-printer	Notation "'indirectbr' τ v ',' brs" := (_, TERM_IndirectBr (τ, v) brs _, _) (in custom vir_term at level 30, τ custom vir_typ at level 99, v custom vir_exp at level 99, brs custom vir_label_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		48828	49153	941	946	pretty-printer	Notation "'invoke' τfn fn 'to' 'label' to_lbl 'unwind' 'label' unwind_lbl" := (_, TERM_Invoke (τfn, fn) _ to_lbl unwind_lbl _ _, _) (in custom vir_term at level 30, τfn custom vir_typ at level 99, fn custom vir_exp at level 99, to_lbl constr at level 0, unwind_lbl constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		49492	49596	953	954	pretty-printer	Notation "( c )" := c (in custom vir_code at level 0, c custom vir_code at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		49599	49682	955	956	pretty-printer	Notation "{ c }" := c (in custom vir_code at level 0, c constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		49686	49914	958	964	pretty-printer	Notation "i ; .. ; j" := (cons i .. (cons j nil) ..) (in custom vir_code at level 99, i custom vir_instr at level 30, j custom vir_instr at level 30, only printing, format "i ';' '//' .. ';' '//' j").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50274	50376	972	973	pretty-printer	Notation "( p )" := p (in custom vir_phi at level 0, p custom vir_phi at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50379	50461	974	975	pretty-printer	Notation "{ p }" := p (in custom vir_phi at level 0, p constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50465	50670	977	982	pretty-printer	Notation "x '=' 'phi' t a" := (x, Phi _ t a, _) (in custom vir_phi at level 30, x constr at level 0, t custom vir_typ at level 99, a custom vir_phi_args at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50736	50843	985	986	pretty-printer	Notation "( ps )" := ps (in custom vir_phis at level 0, ps custom vir_phis at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50846	50932	987	988	pretty-printer	Notation "{ ps }" := ps (in custom vir_phis at level 0, ps constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		50936	51160	990	996	pretty-printer	Notation "p ; .. ; q" := (cons p .. (cons q nil) ..) (in custom vir_phis at level 99, p custom vir_phi at level 30, q custom vir_phi at level 30, only printing, format "p ';' '//' .. ';' '//' q").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		51337	51449	1001	1002	pretty-printer	Notation "( i )" := i (in custom vir_idx_list at level 0, i custom vir_idx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		51452	51539	1003	1004	pretty-printer	Notation "{ i }" := i (in custom vir_idx_list at level 0, i constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		51542	51700	1005	1009	pretty-printer	Notation "τ v" := (τ, v) (in custom vir_idx_list at level 5, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		51703	51933	1010	1016	pretty-printer	Notation "i ',' .. ',' j" := (cons i .. (cons j nil) ..) (in custom vir_idx_list at level 99, i custom vir_idx_list at level 5, j custom vir_idx_list at level 5, only printing, format "i ',' .. ',' j").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		52134	52246	1021	1022	pretty-printer	Notation "( a )" := a (in custom vir_phi_args at level 0, a custom vir_phi_args at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		52249	52336	1023	1024	pretty-printer	Notation "{ a }" := a (in custom vir_phi_args at level 0, a constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		52339	52503	1025	1029	pretty-printer	Notation "'[' v ',' lbl ']'" := (lbl, v) (in custom vir_phi_args at level 5, v custom vir_exp at level 99, lbl constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		52506	52736	1030	1036	pretty-printer	Notation "a ',' .. ',' b" := (cons a .. (cons b nil) ..) (in custom vir_phi_args at level 99, a custom vir_phi_args at level 5, b custom vir_phi_args at level 5, only printing, format "a ',' .. ',' b").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		52923	53035	1041	1042	pretty-printer	Notation "( a )" := a (in custom vir_arm_list at level 0, a custom vir_arm_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53038	53125	1043	1044	pretty-printer	Notation "{ a }" := a (in custom vir_arm_list at level 0, a constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53128	53338	1045	1048	pretty-printer	Notation "'i' sz x ',' 'label' lbl" := (TInt_Literal sz (Z.to_num_int x), lbl) (in custom vir_arm_list at level 5, sz constr at level 0, x constr at level 0, lbl constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53341	53536	1049	1052	pretty-printer	Notation "'i' sz x ',' 'label' lbl" := (TInt_Literal sz x, lbl) (in custom vir_arm_list at level 5, sz constr at level 0, x constr at level 0, lbl constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53539	53775	1053	1059	pretty-printer	Notation "a ; .. ; b" := (cons a .. (cons b nil) ..) (in custom vir_arm_list at level 99, a custom vir_arm_list at level 5, b custom vir_arm_list at level 5, only printing, format "a ';' '//' .. ';' '//' b").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53845	53961	1062	1063	pretty-printer	Notation "( l )" := l (in custom vir_label_list at level 0, l custom vir_label_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		53964	54053	1064	1065	pretty-printer	Notation "{ l }" := l (in custom vir_label_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		54056	54166	1066	1067	pretty-printer	Notation "'label' lbl" := lbl (in custom vir_label_list at level 5, lbl constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		54169	54405	1068	1074	pretty-printer	Notation "l ',' .. ',' m" := (cons l .. (cons m nil) ..) (in custom vir_label_list at level 99, l custom vir_label_list at level 5, m custom vir_label_list at level 5, only printing, format "l ',' .. ',' m").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55125	55229	1088	1089	pretty-printer	Notation "( a )" := a (in custom vir_anns at level 0, a custom vir_anns at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55232	55315	1090	1091	pretty-printer	Notation "{ a }" := a (in custom vir_anns at level 0, a constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55318	55443	1092	1093	pretty-printer	Notation "'align' n" := (ANN_align (Z.to_num_int n)) (in custom vir_anns at level 5, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55446	55556	1094	1095	pretty-printer	Notation "'align' n" := (ANN_align n) (in custom vir_anns at level 5, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55559	55652	1096	1096	pretty-printer	Notation "'volatile'" := ANN_volatile (in custom vir_anns at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55655	55748	1097	1097	pretty-printer	Notation "'atomic'" := ANN_atomic (in custom vir_anns at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55751	55844	1098	1098	pretty-printer	Notation "'inalloca'" := ANN_inalloca (in custom vir_anns at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		55847	56035	1099	1103	pretty-printer	Notation "'num_elements' τ v" := (ANN_num_elements (τ, v)) (in custom vir_anns at level 5, τ custom vir_typ at level 99, v custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56038	56262	1104	1110	pretty-printer	Notation "a ; .. ; b" := (cons a .. (cons b nil) ..) (in custom vir_anns at level 99, a custom vir_anns at level 5, b custom vir_anns at level 5, only printing, format "a ';' '//' .. ';' '//' b").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56397	56499	1114	1115	pretty-printer	Notation "( f )" := f (in custom vir_fmf at level 0, f custom vir_fmf at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56502	56584	1116	1117	pretty-printer	Notation "{ f }" := f (in custom vir_fmf at level 0, f constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56587	56667	1118	1118	pretty-printer	Notation "'nnan'" := Nnan (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56670	56750	1119	1119	pretty-printer	Notation "'ninf'" := Ninf (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56753	56833	1120	1120	pretty-printer	Notation "'nsz'" := Nsz (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56836	56916	1121	1121	pretty-printer	Notation "'arcp'" := Arcp (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		56919	56999	1122	1122	pretty-printer	Notation "'contract'" := Contract (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		57002	57082	1123	1123	pretty-printer	Notation "'afn'" := Afn (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		57085	57165	1124	1124	pretty-printer	Notation "'reassoc'" := Reassoc (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		57168	57248	1125	1125	pretty-printer	Notation "'fast'" := Fast (in custom vir_fmf at level 5, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		57251	57466	1126	1132	pretty-printer	Notation "f ',' .. ',' g" := (cons f .. (cons g nil) ..) (in custom vir_fmf at level 99, f custom vir_fmf at level 5, g custom vir_fmf at level 5, only printing, format "f ',' .. ',' g").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		58046	58219	1144	1147	pretty-printer	Notation "'func' f args ':=' x" := (mk_definition (mk_declaration (Name f) _ _ _ _) args x) (at level 10, only printing, format "'func'  f  args  ':=' '//' x").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		58835	59021	1159	1164	pretty-printer	Notation "label ':' term" := (mk_block label nil nil term _) (at level 10, term custom vir_term at level 99, only printing, format "'[v' label ':' '//' term ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		59024	59265	1165	1171	pretty-printer	Notation "label ':' code term" := (mk_block label nil code term _) (at level 10, code custom vir_code at level 99, term custom vir_term at level 99, only printing, format "'[v' label ':' '//' code '//' term ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		59268	59559	1172	1178	pretty-printer	Notation "label ':' phis code term" := (mk_block label phis code term _) (at level 10, phis custom vir_phis at level 99, code custom vir_code at level 99, term custom vir_term at level 99, only printing, format "'[v' label ':' '//' phis '//' code '//' term ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60138	60250	1193	1194	pretty-printer	Notation "( l )" := l (in custom vir_def_list at level 0, l custom vir_def_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60253	60340	1195	1196	pretty-printer	Notation "{ l }" := l (in custom vir_def_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60343	60550	1197	1202	pretty-printer	Notation "d ; .. ; e" := (cons d .. (cons e nil) ..) (in custom vir_def_list at level 99, d constr at level 10, e constr at level 10, only printing, format "d ';' '//' .. ';' '//' e").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60603	60717	1205	1206	pretty-printer	Notation "( l )" := l (in custom vir_decl_list at level 0, l custom vir_decl_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60720	60808	1207	1208	pretty-printer	Notation "{ l }" := l (in custom vir_decl_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		60811	61019	1209	1214	pretty-printer	Notation "d ; .. ; e" := (cons d .. (cons e nil) ..) (in custom vir_decl_list at level 99, d constr at level 10, e constr at level 10, only printing, format "d ';' '//' .. ';' '//' e").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61069	61187	1217	1218	pretty-printer	Notation "( l )" := l (in custom vir_global_list at level 0, l custom vir_global_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61190	61280	1219	1220	pretty-printer	Notation "{ l }" := l (in custom vir_global_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61283	61493	1221	1226	pretty-printer	Notation "g ; .. ; h" := (cons g .. (cons h nil) ..) (in custom vir_global_list at level 99, g constr at level 10, h constr at level 10, only printing, format "g ';' '//' .. ';' '//' h").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61720	61834	1232	1233	pretty-printer	Notation "( l )" := l (in custom vir_iidx_list at level 0, l custom vir_iidx_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61837	61925	1234	1235	pretty-printer	Notation "{ l }" := l (in custom vir_iidx_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		61928	62038	1236	1237	pretty-printer	Notation "n" := (Z.to_num_int n) (in custom vir_iidx_list at level 5, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		62041	62136	1238	1239	pretty-printer	Notation "n" := n (in custom vir_iidx_list at level 5, n constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		62139	62372	1240	1246	pretty-printer	Notation "i ',' .. ',' j" := (cons i .. (cons j nil) ..) (in custom vir_iidx_list at level 99, i custom vir_iidx_list at level 5, j custom vir_iidx_list at level 5, only printing, format "i ',' .. ',' j").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		62667	62786	1253	1254	pretty-printer	Notation "( bs )" := bs (in custom vir_block_list at level 0, bs custom vir_block_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		62789	62881	1255	1256	pretty-printer	Notation "{ bs }" := bs (in custom vir_block_list at level 0, bs constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		62884	63103	1257	1262	pretty-printer	Notation "b ; .. ; c" := (cons b .. (cons c nil) ..) (in custom vir_block_list at level 99, b constr at level 10, c constr at level 10, only printing, format "b ';' '//' '//' .. ';' '//' '//' c").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		63169	63397	1265	1270	pretty-printer	Notation "'cfg' init ',' args '{' blks '}'" := (mkCFG init blks args) (at level 10, blks custom vir_block_list at level 99, only printing, format "'[v' 'cfg'  init  ','  args  '{' '//' blks '//' '}' ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		63600	63809	1275	1278	pretty-printer	Notation "'modul' '{' defs '}'" := (mk_modul None None None nil nil nil defs) (at level 10, defs custom vir_def_list at level 99, only printing, format "'[v' 'modul'  '{' '//' defs '//' '}' ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		63884	64183	1280	1286	pretty-printer	Notation "'modul' '{' decls '|' defs '}'" := (mk_modul None None None nil nil decls defs) (at level 10, decls custom vir_decl_list at level 99, defs custom vir_def_list at level 99, only printing, format "'[v' 'modul'  '{' '//' decls '//'  '|' '//' defs '//' '}' ']'").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		64662	64854	1296	1300	pretty-printer	Notation "'global' x ':' t ':=' e" := (mk_global x t false (Some e) false false nil) (at level 10, t custom vir_typ at level 99, e custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		64857	65050	1301	1305	pretty-printer	Notation "'constant' x ':' t ':=' e" := (mk_global x t true (Some e) false false nil) (at level 10, t custom vir_typ at level 99, e custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		65053	65198	1306	1309	pretty-printer	Notation "'extern' x ':' t" := (mk_global x t false None true false nil) (at level 10, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		65201	65391	1310	1314	pretty-printer	Notation "'alias' x ':' t ':=' e" := (mk_global x t false (Some e) false true nil) (at level 10, t custom vir_typ at level 99, e custom vir_exp at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		65600	65762	1319	1324	pretty-printer	Notation "'declare' x ':' t" := (mk_declaration x t _ _ _) (at level 10, x constr at level 0, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		65940	66031	1329	1330	pretty-printer	Notation "'#decl' d" := (TLE_Declaration d) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66034	66124	1331	1332	pretty-printer	Notation "'#def' d" := (TLE_Definition d) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66127	66213	1333	1334	pretty-printer	Notation "'#global' g" := (TLE_Global g) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66216	66338	1335	1336	pretty-printer	Notation "'#type' id ':=' t" := (TLE_Type_decl id t) (at level 10, t custom vir_typ at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66341	66427	1337	1338	pretty-printer	Notation "'#target' s" := (TLE_Target s) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66430	66520	1339	1340	pretty-printer	Notation "'#datalayout' s" := (TLE_Datalayout s) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66523	66618	1341	1342	pretty-printer	Notation "'#source' s" := (TLE_Source_filename s) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66621	66708	1343	1344	pretty-printer	Notation "'#comment' s" := (TLE_Comment s) (at level 10, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66711	66905	1345	1348	pretty-printer	Notation "'#metadata' id ',' distinct ',' md" := (TLE_Metadata id distinct md) (at level 10, id constr at level 0, distinct constr at level 0, md constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		66908	67062	1349	1352	pretty-printer	Notation "'#attrgroup' i attrs" := (TLE_Attribute_group i attrs) (at level 10, i constr at level 0, attrs constr at level 0, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		67144	67256	1355	1356	pretty-printer	Notation "( l )" := l (in custom vir_tle_list at level 0, l custom vir_tle_list at level 99, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		67259	67346	1357	1358	pretty-printer	Notation "{ l }" := l (in custom vir_tle_list at level 0, l constr, only printing).
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax.VIR_Notations		67349	67556	1359	1364	pretty-printer	Notation "t ; .. ; u" := (cons t .. (cons u nil) ..) (in custom vir_tle_list at level 99, t constr at level 10, u constr at level 10, only printing, format "t ';' '//' .. ';' '//' u").
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax	SurfaceSyntaxTest	68822	68844	1395	1395	notation scope	Import VIR_Notations .
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax	SurfaceSyntaxTest	68908	69180	1399	1409	printing example (no proof)	Goal P add_twice. … Abort.
+src/rocq/Syntax/SurfaceSyntax.v	Vellvm.Syntax.SurfaceSyntax	SurfaceSyntaxTest	72885	73570	1501	1515	printing example (no proof)	Goal P test_branch. … Abort.
+src/rocq/Utils/DList.v	Vellvm.Utils.DList		76	103	3	3	notation scope	Import ListNotations Ascii.
+src/rocq/Utils/DList.v	Vellvm.Utils.DList		104	134	4	4	notation scope	Local Open Scope string_scope.
+src/rocq/Syntax/ShowAST.v	Vellvm.Syntax.ShowAST		335	356	18	18	notation scope	Import ListNotations.
+src/rocq/Syntax/ShowAST.v	Vellvm.Syntax.ShowAST		1199	1232	52	52	term abbreviation	Notation sd := string_to_DString.
+src/rocq/Syntax/ShowAST.v	Vellvm.Syntax.ShowAST		1381	1455	61	61	term notation	#[global] Infix "@@" := (DList_append) (right associativity, at level 60).
+src/rocq/Syntax/ShowAST.v	Vellvm.Syntax.ShowAST	StringOps	2250	2274	87	87	notation scope	Local Open Scope string.
+src/rocq/Syntax/ShowAST.v	Vellvm.Syntax.ShowAST	ShowInstances	3112	3136	114	114	notation scope	Local Open Scope string.
+src/rocq/Syntax/ReprAST.v	Vellvm.Syntax.ReprAST		289	310	12	12	notation scope	Import ListNotations.
+src/rocq/Syntax/ReprAST.v	Vellvm.Syntax.ReprAST	ReprInstances	1798	1822	84	84	notation scope	Local Open Scope string.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		150	171	7	7	notation scope	Import MonadNotation.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		173	194	9	9	notation scope	Import MonadNotation.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		195	212	10	10	notation scope	Open Scope monad.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		2014	2045	74	74	term abbreviation	Notation MaybePoison := option.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		2046	2068	75	75	term abbreviation	Notation Pois := None.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		2069	2093	76	76	term abbreviation	Notation NoPois := Some.
+src/rocq/Semantics/EOU.v	Vellvm.Semantics.EOU		2431	2463	88	88	notation scope	#[local] Open Scope monad_scope.
+src/rocq/Semantics/Interfaces/IPtr.v	Vellvm.Semantics.Interfaces.IPtr		1213	1238	69	69	notation scope	Open Scope program_scope.
+src/rocq/Semantics/Interfaces/Sizeof.v	Vellvm.Semantics.Interfaces.Sizeof	PadLemmas	1062	1087	29	29	notation scope	Local Open Scope N_scope.
+src/rocq/Semantics/Interfaces/Pointer.v	Vellvm.Semantics.Interfaces.Pointer		2287	2300	82	82	notation scope	Open Scope Z.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		572	591	40	40	notation scope	Open Scope N_scope.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue	5462	5508	175	175	elaboration coercion	Coercion DVALUE_Base : dvalue_base >-> dvalue.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.DecidableEquality	17086	17116	459	459	proof search/rewrite rule	Hint Unfold eqv_dvalue : core.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.DecidableEquality	17124	17154	461	461	proof search/rewrite rule	Hint Unfold eqv_dvalue : core.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.DecidableEquality	19900	19958	541	541	proof tactic	Ltac __abs
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.DecidableEquality	19963	20001	542	542	proof tactic	Ltac __eq
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue	20878	20919	590	590	instance search registration	#[global] Existing Instance VMemInt_iptr.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	28715	28759	783	783	proof reduction control	Arguments eval_int_op _ _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	29423	29475	800	800	proof reduction control	Arguments coerce_integer_to_int _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	40607	40650	1037	1037	proof reduction control	Arguments eval_iop _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	41989	42037	1070	1070	proof reduction control	Arguments eval_int_icmp _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	46996	47038	1185	1185	proof reduction control	Arguments float_cmp _ _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue.ARITHMETIC	48074	48117	1207	1207	proof reduction control	Arguments double_cmp _ _ _ : simpl nomatch.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues	DValue	63933	63976	1578	1578	proof search/rewrite rule	Hint Constructors dvalue_has_dtyp : dvalue.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		70403	70456	1723	1723	proof search/rewrite rule	#[global] Hint Constructors dvalue_has_dtyp : dvalue.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		70457	70517	1724	1724	proof search/rewrite rule	#[global] Hint Resolve forall_repeat_true : DVALUE_HAS_DTYP.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		70518	70580	1725	1725	proof search/rewrite rule	#[global] Hint Constructors dvalue_has_dtyp : DVALUE_HAS_DTYP.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		70581	70636	1726	1726	proof search/rewrite rule	#[global] Hint Rewrite Nnat.Nat2N.id : DVALUE_HAS_DTYP.
+src/rocq/Semantics/DynamicValues.v	Vellvm.Semantics.DynamicValues		70637	70697	1727	1727	proof search/rewrite rule	#[global] Hint Resolve List.repeat_length : DVALUE_HAS_DTYP.
+src/rocq/Semantics/LLVMEvents.v	Vellvm.Semantics.LLVMEvents		425	447	26	26	notation scope	Import ITreeNotations.
+src/rocq/Semantics/LLVMEvents.v	Vellvm.Semantics.LLVMEvents		11617	11695	238	238	proof search/rewrite rule	#[export] Hint Unfold CFGEtop CFGtop MCFGEtop MCFGtop MCFGEbot MCFGbot : core.
+src/rocq/Semantics/Implementations/Pointer.v	Vellvm.Semantics.Implementations.Pointer	withIPtr	1547	1579	63	63	instance search registration	Existing Instance overlaps_ptoi.
+src/rocq/Semantics/MemoryBytes.v	Vellvm.Semantics.MemoryBytes		158	177	12	12	notation scope	Open Scope N_scope.
+src/rocq/Semantics/Operations/Gep.v	Vellvm.Semantics.Operations.Gep		93	106	8	8	notation scope	Open Scope Z.
+src/rocq/Semantics/Operations/Compare.v	Vellvm.Semantics.Operations.Compare	Compare	1314	1367	35	35	proof reduction control	Arguments eval_icmp_int_base _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/Operations/Compare.v	Vellvm.Semantics.Operations.Compare	Compare	2742	2791	62	62	proof reduction control	Arguments eval_icmp_base _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/Operations/Compare.v	Vellvm.Semantics.Operations.Compare	Compare	4013	4059	90	90	proof reduction control	Arguments eval_icmp _ _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/Operations/Conversion.v	Vellvm.Semantics.Operations.Conversion	Convert	12337	12389	302	302	proof reduction control	Arguments convert_pure_base _ _ _ _ : simpl nomatch.
+src/rocq/Semantics/Operations/Freeze.v	Vellvm.Semantics.Operations.Freeze		164	183	14	14	notation scope	Open Scope N_scope.
+src/rocq/Semantics/IntrinsicsDefinitions.v	Vellvm.Semantics.IntrinsicsDefinitions		350	369	27	27	notation scope	Import EqvNotation.
+src/rocq/Semantics/IntrinsicsDefinitions.v	Vellvm.Semantics.IntrinsicsDefinitions	IntegerIntrinsics	3085	3113	91	91	notation scope	#[local] Open Scope Z_scope.
+src/rocq/Semantics/IntrinsicsDefinitions.v	Vellvm.Semantics.IntrinsicsDefinitions	Intrinsics	16229	16253	418	418	notation scope	Open Scope string_scope.
+src/rocq/Semantics/IntrinsicsDefinitions.v	Vellvm.Semantics.IntrinsicsDefinitions	Intrinsics	17214	17256	440	440	term abbreviation	#[local] Notation retr x := (ret (inr x)).
+src/rocq/Semantics/Attributes.v	Vellvm.Semantics.Attributes		236	260	20	20	notation scope	Open Scope string_scope.
+src/rocq/Semantics/Attributes.v	Vellvm.Semantics.Attributes	MemoryChecks	13736	13775	323	323	term abbreviation	#[local] Notation lift := EOU_to_itree.
+src/rocq/Semantics/Denotation.v	Vellvm.Semantics.Denotation		366	390	29	29	notation scope	Open Scope string_scope.
+src/rocq/Semantics/Denotation.v	Vellvm.Semantics.Denotation		391	410	30	30	notation scope	Open Scope N_scope.
+src/rocq/Semantics/Denotation.v	Vellvm.Semantics.Denotation	Denotation	3588	3627	96	96	term abbreviation	#[local] Notation lift := EOU_to_itree.
+src/rocq/Semantics/Denotation.v	Vellvm.Semantics.Denotation	Denotation	14997	15038	385	385	proof reduction control	Arguments denote_exp _ _ : simpl nomatch.
+src/rocq/Semantics/Denotation.v	Vellvm.Semantics.Denotation	Denotation	15260	15302	394	394	proof reduction control	Arguments denote_exp' _ _ : simpl nomatch.
+src/rocq/Semantics/Interfaces/Memory.v	Vellvm.Semantics.Interfaces.Memory		564	577	39	39	notation scope	Open Scope Z.
+src/rocq/Semantics/Handlers/Global.v	Vellvm.Semantics.Handlers.Global	Globals	554	592	34	34	term abbreviation	#[local] Notation map := (global_env).
+src/rocq/Semantics/Handlers/Global.v	Vellvm.Semantics.Handlers.Global	Globals.PARAMS	1922	1965	71	71	term abbreviation	Notation Effin := (E +' F +' GlobalE +' G).
+src/rocq/Semantics/Handlers/Global.v	Vellvm.Semantics.Handlers.Global	Globals.PARAMS	1970	2003	72	72	term abbreviation	Notation Effout := (E +' F +' G).
+src/rocq/Semantics/Handlers/Local.v	Vellvm.Semantics.Handlers.Local	Locals	536	573	33	33	term abbreviation	#[local] Notation map := (local_env).
+src/rocq/Semantics/Handlers/Local.v	Vellvm.Semantics.Handlers.Local	Locals	1821	1844	68	68	notation scope	Open Scope monad_scope.
+src/rocq/Semantics/Handlers/Local.v	Vellvm.Semantics.Handlers.Local	Locals.PARAMS	1933	1975	72	72	term abbreviation	Notation Effin := (E +' F +' LocalE +' G).
+src/rocq/Semantics/Handlers/Local.v	Vellvm.Semantics.Handlers.Local	Locals.PARAMS	1980	2013	73	73	term abbreviation	Notation Effout := (E +' F +' G).
+src/rocq/Semantics/Handlers/Stack.v	Vellvm.Semantics.Handlers.Stack	StackMap	3427	3450	97	97	notation scope	Open Scope monad_scope.
+src/rocq/Semantics/Handlers/Stack.v	Vellvm.Semantics.Handlers.Stack	StackMap.PARAMS	3550	3604	101	101	term abbreviation	Notation Effin := (E +' F +' (LocalE +' StackE) +' G).
+src/rocq/Semantics/Handlers/Stack.v	Vellvm.Semantics.Handlers.Stack	StackMap.PARAMS	3609	3642	102	102	term abbreviation	Notation Effout := (E +' F +' G).
+src/rocq/Semantics/Handlers/Intrinsics.v	Vellvm.Semantics.Handlers.Intrinsics		331	350	23	23	notation scope	Import EqvNotation.
+src/rocq/Semantics/Handlers/Intrinsics.v	Vellvm.Semantics.Handlers.Intrinsics	PARAMS	2275	2314	76	76	term abbreviation	Notation Eff := (E +' IntrinsicE +' F).
+src/rocq/Semantics/Handlers/Memory.v	Vellvm.Semantics.Handlers.Memory	withParams	645	686	37	37	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Semantics/Handlers/Memory.v	Vellvm.Semantics.Handlers.Memory	PARAMS	3301	3342	105	105	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Semantics/Handlers/Memory.v	Vellvm.Semantics.Handlers.Memory	PARAMS	3436	3488	109	109	term abbreviation	Notation Effin := (E +' IntrinsicE +' MemoryE +' G).
+src/rocq/Semantics/Handlers/Memory.v	Vellvm.Semantics.Handlers.Memory	PARAMS	3491	3519	110	110	term abbreviation	Notation Effout := (E +' G).
+src/rocq/Semantics/Handlers/Draw.v	Vellvm.Semantics.Handlers.Draw	PARAMS	715	751	30	30	term abbreviation	Notation Effin := (E +' DrawE +' G).
+src/rocq/Semantics/Handlers/Draw.v	Vellvm.Semantics.Handlers.Draw	PARAMS	754	782	31	31	term abbreviation	Notation Effout := (E +' G).
+src/rocq/Semantics/InterpretationStack.v	Vellvm.Semantics.InterpretationStack		378	399	23	23	notation scope	Import MonadNotation.
+src/rocq/Semantics/InterpretationStack.v	Vellvm.Semantics.InterpretationStack		400	442	24	24	term abbreviation	#[local] Notation stateT := Monads.stateT.
+src/rocq/Semantics/InterpretationStack.v	Vellvm.Semantics.InterpretationStack		443	475	25	25	notation scope	#[local] Open Scope monad_scope.
+src/rocq/Semantics/InterpretationStack.v	Vellvm.Semantics.InterpretationStack	withParams	539	580	30	30	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		110	140	7	7	term abbreviation	Notation ℑs := interp_mcfg.
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		144	197	9	9	term notation	Notation "⟦ e 'at?' t '⟧e'" := (denote_exp t e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		200	260	10	10	term notation	Notation "⟦ e 'at' t '⟧e'" := (denote_exp (Some t) e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		263	319	11	11	term notation	Notation "⟦ e '⟧e'" := (denote_exp None e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		322	376	12	12	term notation	Notation "⟦ e 'at?' t '⟧e''" := (denote_exp' t e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		379	440	13	13	term notation	Notation "⟦ e 'at' t '⟧e''" := (denote_exp' (Some t) e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		443	500	14	14	term notation	Notation "⟦ e '⟧e''" := (denote_exp' None e).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		503	556	15	15	term notation	Notation "⟦ i '⟧i'" := (denote_instr i).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		559	611	16	16	term notation	Notation "⟦ c '⟧c'" := (denote_code c).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		614	672	17	17	term notation	Notation "⟦ t '⟧t'" := (denote_terminator t).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		675	767	18	18	term notation	Notation "⟦ phi '⟧Φ' from" := (denote_phi from phi) (at level 0, from at next level).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		770	864	19	19	term notation	Notation "⟦ phis '⟧Φs' from" := (denote_phis from phis) (at level 0, from at next level).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		867	921	20	20	term notation	Notation "⟦ bk '⟧b'" := (denote_block bk).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		924	978	21	21	term notation	Notation "⟦ bks '⟧bs'" := (denote_ocfg bks).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		981	1032	22	22	term notation	Notation "⟦ f '⟧cfg'" := (denote_cfg f).
+src/rocq/Semantics/Notations.v	Vellvm.Semantics.Notations.SemNotations		1035	1091	23	23	term notation	Notation "⟦ f '⟧f'" := (denote_function f).
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		873	894	43	43	notation scope	Import MonadNotation.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		895	924	44	44	notation scope	Local Open Scope monad_scope.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff	RuttcF	5064	5097	153	153	proof search/rewrite rule	Hint Constructors ruttcF : itree.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff	RuttcF	5260	5287	158	158	proof search/rewrite rule	Hint Unfold ruttc_ : itree.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		5727	5770	174	174	proof search/rewrite rule	#[global] Hint Constructors ruttcF : itree.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		5771	5808	175	175	proof search/rewrite rule	#[global] Hint Unfold ruttc_ : itree.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		5950	6004	180	180	proof tactic	Ltac rccbn
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6005	6074	181	181	proof tactic	Ltac rccbn_in H
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6075	6127	182	182	tactic syntax	Tactic Notation "rccbn" "in" ident(h)
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6195	6249	185	185	tactic syntax	Tactic Notation "rcstep"
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6250	6333	186	186	tactic syntax	Tactic Notation "rcstep" "in" ident(h)
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6903	6957	199	199	proof search/rewrite rule	#[global] Hint Rewrite @ruttc_to_mon_obs : to_mon_obs.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		6958	7011	200	200	proof search/rewrite rule	#[global] Hint Rewrite @ruttc_to_mon_go : to_mon_go.
+src/rocq/Utils/rutt_cutoff.v	Vellvm.Utils.rutt_cutoff		12885	13044	344	348	proof tactic	Ltac fold_ruttc
+src/rocq/Theory/MemoryBytesFacts.v	Vellvm.Theory.MemoryBytesFacts		578	606	23	23	notation scope	#[local] Open Scope N_scope.
+src/rocq/Theory/MemoryBytesFacts.v	Vellvm.Theory.MemoryBytesFacts	MemoryByteFacts	23079	23360	519	523	proof tactic	Ltac cbn_ser H
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement	Refinement	6030	6089	168	168	term abbreviation	Notation I2F_exc_dvalue := (sum_rel I2F_dvalue I2F_dvalue).
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement		20566	20606	475	475	proof search/rewrite rule	Hint Constructors I2F_memory_bit : core.
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement		20607	20648	476	476	proof search/rewrite rule	Hint Constructors I2F_dvalue_base : core.
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement		20649	20685	477	477	proof search/rewrite rule	Hint Constructors I2F_dvalue : core.
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement		20686	20719	478	478	proof search/rewrite rule	Hint Constructors I2F_EOU : core.
+src/rocq/Theory/I2F/Refinement.v	Vellvm.Theory.I2F.Refinement		20720	20754	479	479	proof search/rewrite rule	Hint Constructors I2F_EOUP : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		596	741	30	34	proof tactic	Ltac rleaf
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		742	813	35	35	tactic syntax	Tactic Notation "rbind" uconstr(x)
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		814	860	36	36	tactic syntax	Tactic Notation "erbind"
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		861	905	37	37	proof search/rewrite rule	Hint Resolve ruttc_ret ruttc_trigger : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		906	941	38	38	proof search/rewrite rule	Hint Unfold I2F_refine_MCFG : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		942	972	39	39	proof search/rewrite rule	Hint Unfold I2F_refine : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		973	1000	40	40	proof search/rewrite rule	Hint Unfold I2F_Addr: core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		1001	1029	41	41	proof search/rewrite rule	Hint Unfold I2F_Iptr : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		1030	1058	42	42	proof search/rewrite rule	Hint Transparent dvp : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		1059	1114	43	43	proof tactic	Ltac cbnn
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		1115	1209	44	45	tactic syntax	Tactic Notation "cbnn" "in" ident(h)
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		1530	1573	54	54	proof search/rewrite rule	Hint Resolve refine_dvalue_base_map : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp	FreezeUnfold	2610	2659	76	76	term abbreviation	Local Notation FRZ := (@freeze Pa E HD HF HO HU).
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp	FreezeUnfold	2662	2717	77	77	term abbreviation	Local Notation FRZB := (@freeze_base Pa E HD HF HO HU).
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp	FreezeUnfold	2720	2760	78	78	term abbreviation	Local Notation RAISE := (@raise E _ HF).
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp	FreezeUnfold	2763	2841	79	79	term abbreviation	Local Notation MISMATCH := "freeze_fields: mismatched field types and values".
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		8487	8538	216	216	proof reduction control	#[local] Arguments freeze_mixed_bits : simpl never.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		16744	16788	399	399	proof search/rewrite rule	#[local] Hint Resolve Forall2_repeat : core.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		25313	25368	635	635	proof reduction control	#[local] Arguments Integers.max_unsigned : simpl never.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		25369	25416	636	636	proof reduction control	#[local] Arguments Integers.repr : simpl never.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		25417	25462	637	637	proof reduction control	#[local] Arguments msamesign_Z : simpl never.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		31091	31214	757	760	proof tactic	Ltac i2f_vec_flags
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		34577	35324	853	874	proof tactic	Ltac i2f_vec_wrap base_lemma
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		36149	36348	897	899	proof tactic	Ltac i2f_scalar_case base_lemma H1 H2
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		36520	36964	904	914	proof tactic	Ltac i2f_vector_case base_lemma sz H1 H2
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		44026	44064	1112	1112	instance search registration	#[local] Existing Instance EOUP_Monad.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		44067	44112	1115	1115	proof reduction control	#[local] Arguments absorb_pois : simpl never.
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		45003	45195	1135	1142	proof tactic	Ltac break_match_goal_safe
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		45408	45603	1148	1153	proof tactic	Ltac i2f_in_range_case
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		76012	76102	1975	1976	proof tactic	Ltac i2f_poison
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		96401	96722	2410	2416	term abbreviation	Local Notation SER := (fun (a : @dvalue PInf) (b : @dvalue PFin) => forall dt offset pad_to acc acc', Forall2 I2F_memory_byte acc acc' -> I2F_EOU I2F_ser_state (@acc_dvalue_to_memory_bytes_h PInf dt a offset pad_to acc) (@acc_dvalue_to_memory_bytes_h PFin dt b offset pad_to acc')).
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		116509	116864	2890	2899	proof tactic	Ltac i2f_split_case i tac
+src/rocq/Theory/I2F/I2F_exp.v	Vellvm.Theory.I2F.I2F_exp		117404	117590	2915	2919	proof tactic	Ltac i2f_poison_index R
+src/rocq/Theory/I2F/I2F_attributes.v	Vellvm.Theory.I2F.I2F_attributes		865	886	34	34	notation scope	Import MonadNotation.
+src/rocq/Theory/I2F/I2F_attributes.v	Vellvm.Theory.I2F.I2F_attributes		887	910	35	35	notation scope	Open Scope monad_scope.
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		661	718	33	33	proof tactic	Ltac bind_exp
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		1276	1320	44	44	proof search/rewrite rule	Hint Resolve refine_dvalue_base_map' : core.
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		1321	1355	45	45	proof search/rewrite rule	Hint Unfold I2F_refine_CFG : core.
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		7223	8086	181	198	proof tactic	Ltac i2f_assume_check
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		18157	18193	442	442	proof search/rewrite rule	Hint Constructors I2F_dvalue : core.
+src/rocq/Theory/I2F/I2F_denotation.v	Vellvm.Theory.I2F.I2F_denotation		18194	18216	443	443	proof search/rewrite rule	Hint Unfold TT : core.
+src/rocq/Theory/I2F/I2F_memS.v	Vellvm.Theory.I2F.I2F_memS		6821	6865	184	184	proof search/rewrite rule	#[export] Hint Constructors I2F_memS : core.
+src/rocq/Theory/I2F/I2F_memory.v	Vellvm.Theory.I2F.I2F_memory		190	211	10	10	notation scope	Import ListNotations.
+src/rocq/Theory/I2F/I2F_memory.v	Vellvm.Theory.I2F.I2F_memory		745	781	39	39	instance search registration	Existing Instance MemoryModelStateV.
+src/rocq/Theory/I2F/I2F_memory.v	Vellvm.Theory.I2F.I2F_memory		782	823	40	40	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		167	188	11	11	notation scope	Import ListNotations.
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		787	823	42	42	instance search registration	Existing Instance MemoryModelStateV.
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		824	865	43	43	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		2077	2170	75	76	proof tactic	Ltac i2f_arg Hargs
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		5429	5530	159	160	proof tactic	Ltac i2f_va_fail
+src/rocq/Theory/I2F/I2F_interp.v	Vellvm.Theory.I2F.I2F_interp		7571	7819	202	208	proof tactic	Ltac i2f_intrinsic_passthrough
+src/rocq/Theory/I2F/I2F_toplevel.v	Vellvm.Theory.I2F.I2F_toplevel		103	124	7	7	notation scope	Import ListNotations.
+src/rocq/Theory/I2F/I2F_toplevel.v	Vellvm.Theory.I2F.I2F_toplevel		872	908	44	44	instance search registration	Existing Instance MemoryModelStateV.
+src/rocq/Theory/I2F/I2F_toplevel.v	Vellvm.Theory.I2F.I2F_toplevel		909	950	45	45	instance search registration	Existing Instance MemoryModelPrimitivesV.
+src/rocq/Theory/I2F/I2F_toplevel.v	Vellvm.Theory.I2F.I2F_toplevel		9143	9187	281	281	proof reduction control	#[local] Arguments Pos.eq_dec : simpl never.
+src/rocq/Theory/I2F/I2F_toplevel.v	Vellvm.Theory.I2F.I2F_toplevel		11429	11474	330	330	proof reduction control	#[local] Arguments Integers.eq : simpl never.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational		161	177	12	12	notation scope	Open Scope list.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational		294	316	17	17	notation scope	Import ITreeNotations.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational		317	341	18	18	notation scope	Import HasPostNotations.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	893	913	37	37	notation scope	Import SemNotations.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	917	959	39	39	proof search/rewrite rule	#[local] Hint Rewrite @bind_ret_l : rwexp.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	962	1003	40	40	proof search/rewrite rule	#[local] Hint Rewrite @bind_bind : rwexp.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1006	1051	41	41	proof search/rewrite rule	#[local] Hint Rewrite @translate_ret : rwexp.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1054	1100	42	42	proof search/rewrite rule	#[local] Hint Rewrite @translate_bind : rwexp.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1103	1152	43	43	proof search/rewrite rule	#[local] Hint Rewrite @translate_trigger : rwexp.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1155	1198	44	44	proof tactic	#[local] Ltac go
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1201	1245	45	45	tactic syntax	#[local] Tactic Notation "go!"
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1387	1498	48	49	proof tactic	#[local] Ltac gbind c
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1501	1533	50	50	proof tactic	#[local] Ltac solve
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	1536	1693	51	55	proof tactic	#[local] Ltac eqbind
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	2582	2612	97	97	proof reduction control	Arguments assoc : simpl never.
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8507	8564	290	290	proof tactic	#[local] Ltac bind
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8569	8615	291	291	proof tactic	#[local] Ltac ret
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8620	8808	292	296	proof tactic	#[local] Ltac abs
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8813	8854	297	297	term abbreviation	#[local] Notation TT1 := (fun _ => True).
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8859	8909	298	298	term notation	#[local] Infix "⊕" := (sum_pred) (at level 10).
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams.Outputs	8915	8966	299	299	term notation	#[local] Infix "⊗" := (prod_pred) (at level 10).
+src/rocq/Theory/Equational.v	Vellvm.Theory.Equational	withParams	15314	15351	477	477	proof reduction control	Arguments denote_block : simpl never.
