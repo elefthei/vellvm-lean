@@ -1,7 +1,5 @@
-module
-
-public import Vellvm.Numeric.Rocqlib
-public import Vellvm.Numeric.Integers
-public import Vellvm.Numeric.Zbits
-public import Vellvm.Numeric.Floats
-public import Vellvm.Numeric.IEEE754_extra
+import Vellvm.Numeric.Rocqlib
+import Vellvm.Numeric.Integers
+import Vellvm.Numeric.Zbits
+import Vellvm.Numeric.Floats
+import Vellvm.Numeric.IEEE754_extra
